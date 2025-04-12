@@ -1,0 +1,7 @@
+/* Подключаем шрифт Roboto, который визуально похож на Magistral */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Переопределяем Magistral на Roboto для всего приложения */
+:root {
+  --magistral-font: 'Roboto', Arial, sans-serif;
+} 

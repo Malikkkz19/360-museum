@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e4b85e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f5d78e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e4b85e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Круглая основа логотипа -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gold)" stroke-width="2" />
+  
+  <!-- Центральная ракета -->
+  <path d="M100,30 L100,120 M85,50 L100,30 L115,50" stroke="url(#gold)" stroke-width="3" fill="none" />
+  
+  <!-- Земля/волны внизу -->
+  <path d="M50,150 C60,140 70,160 80,150 C90,140 100,160 110,150 C120,140 130,160 140,150 C150,140 160,160 170,150" stroke="url(#gold)" stroke-width="3" fill="none" />
+  
+  <!-- Орбиты/круги вокруг ракеты -->
+  <circle cx="130" cy="70" r="10" fill="none" stroke="url(#gold)" stroke-width="2" />
+  <circle cx="145" cy="60" r="5" fill="url(#gold)" />
+  
+  <!-- Дополнительные элементы, стилизованные под космос -->
+  <path d="M70,90 C60,70 90,60 80,90" stroke="url(#gold)" stroke-width="2" fill="none" />
+  <path d="M60,120 C50,100 80,90 70,120" stroke="url(#gold)" stroke-width="2" fill="none" />
+</svg> 

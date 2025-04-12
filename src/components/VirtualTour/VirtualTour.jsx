@@ -1,11 +1,19 @@
 import React, { useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import * as Marzipano from 'marzipano';
 import './VirtualTour.css';
 
 const VirtualTour = () => {
   const panoRef = useRef(null);
+  const { hallId } = useParams();
   
   useEffect(() => {
+    console.log("Загрузка тура для зала:", hallId);
+    // Здесь логика загрузки и инициализации 360-тура
+    // на основе hallId
+    // Например, выбор нужной панорамы из списка или конфигурации
+    // pannellum.viewer('panorama', { /* ...config based on hallId */ });
+
     // Данные о сценах (панорамах)
     const scenes = [
       {
@@ -228,7 +236,7 @@ const VirtualTour = () => {
     return () => {
       viewer.destroy();
     };
-  }, []);
+  }, [hallId]);
 
   return <div ref={panoRef} className="pano-container"></div>;
 };
