@@ -9,9 +9,10 @@ import hall3 from '../../assets/halls/3.png';
 import hall4 from '../../assets/halls/4.png';
 import hall5 from '../../assets/halls/5.png';
 import hall6 from '../../assets/halls/6.png';
-// Импортируем изображения ракет
+// Импортируем изображения ракет и планеты
 import whiteRocket from '../../assets/halls/white_rocket.png';
 import yellowRocket from '../../assets/halls/yellow_rocket.png';
+import planet from '../../assets/halls/planet.png';
 // Удаляем импорт звезд
 // import logoLeft from '../../assets/logo-left.png';
 // import logoRight from '../../assets/logo-right.png';
@@ -70,12 +71,14 @@ function LandingPage() {
         <div className="star-dot star-dot-25"></div>
       </div>
       
-      {/* Ракеты на фоне */}
+      {/* Ракеты и планета на фоне */}
       <div className="white-rocket">
         <img src={whiteRocket} alt="Белая ракета" />
       </div>
-      <div className="yellow-rocket">
-        <img src={yellowRocket} alt="Желтая ракета" />
+      
+      {/* Планета в правом верхнем углу */}
+      <div className="planet">
+        <img src={planet} alt="Планета" />
       </div>
       
       {/* Временно скрываем логотипы */}
@@ -124,4 +127,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage; 
+export default LandingPage;

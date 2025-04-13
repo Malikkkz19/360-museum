@@ -117,14 +117,23 @@
 /* Карта музея */
 .museum-map {
   position: relative;
-  width: 85%; /* Немного уменьшил для лучшего вида */
-  max-width: 1400px;
-  height: 65vh; /* Увеличил высоту для пропорций */
-  background-color: white;
-  border-radius: 5px;
+  width: 230%; /* Увеличил ширину на 50% */
+  max-width: 3000px; /* Увеличил максимальную ширину на 50% */
+  height: 120vh; /* Увеличил высоту на 50% */
   overflow: hidden;
-  margin: 20px auto; /* Отступы сверху и снизу */
-  border: 3px solid #e4b85e; /* Золотистая рамка карты */
+  margin: -26vh -20vh 0; /* Поднял схему выше на 30% (24vh от 80vh) */
+  display: flex;
+  justify-content: flex-end; /* Изменено с center на flex-end для сдвига влево */
+  align-items: center;
+  margin-left: -15%; /* Добавлен отрицательный отступ слева для сдвига на 5% */
+}
+
+/* Стили для SVG-схемы музея */
+.museum-scheme {
+  max-width: 230%; /* Увеличил максимальную ширину на 50% */
+  max-height: 230%; /* Увеличил максимальную высоту на 50% */
+  object-fit: contain;
+  margin: auto; /* Дополнительное центрирование */
 }
 
 /* Сетка для расположения залов */
@@ -134,7 +143,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff; /* Белый фон */
   /* padding: 10px; */ /* Убрали внутренний отступ, если мешает */
   box-sizing: border-box;
 }
@@ -280,31 +288,37 @@
 /* --- Нижняя часть (кнопка, легенда) --- */
 .map-footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 85%; /* Ширина как у карты */
   max-width: 1400px;
-  margin-top: 15px; /* Уменьшил отступ */
+  margin-top: 15px;
+  position: relative;
+  height: 120px; /* Фиксированная высота для позиционирования */
 }
 
-/* Кнопка назад - более эффектная */
-.back-button {
+/* Кнопка назад на странице карты - более эффектная */
+.map-back-button {
   display: flex;
   align-items: center;
   background: linear-gradient(45deg, rgba(46, 70, 105, 0.8), rgba(72, 104, 153, 0.8)); /* Градиент фона */
   border: 2px solid #e4b85e; /* Золотистая граница */
   border-radius: 50px; /* Более округлая форма */
   color: white;
-  padding: 12px 25px; /* Увеличены отступы */
-  font-size: 18px; /* Увеличен размер шрифта */
+  padding: 15px 30px; /* Увеличены отступы */
+  font-size: 22px; /* Увеличен размер шрифта */
   font-weight: bold; /* Жирный шрифт */
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 0 15px rgba(228, 184, 94, 0.4); /* Добавлено свечение */
   text-transform: uppercase; /* Заглавные буквы */
   letter-spacing: 1px; /* Межбуквенный интервал */
+  position: absolute;
+  left: -230px;
+  bottom: 15px;
+  z-index: 10;
 }
 
-.back-button:hover {
+.map-back-button:hover {
   background: linear-gradient(45deg, rgba(72, 104, 153, 0.8), rgba(46, 70, 105, 0.8)); /* Инвертированный градиент при наведении */
   box-shadow: 0 0 20px rgba(228, 184, 94, 0.6); /* Усиленное свечение при наведении */
   transform: translateY(-2px); /* Эффект поднятия при наведении */
@@ -319,63 +333,69 @@
 .map-legend {
   display: flex;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(to right, rgba(46, 70, 105, 0.9), rgba(72, 104, 153, 0.9)); /* Градиент фона */
   border-radius: 15px;
-  padding: 15px 25px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Тень для объема */
-  border: 1px solid rgba(228, 184, 94, 0.4); /* Тонкая золотистая граница */
+  padding: 20px 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Усиленная тень для объема */
+  border: 2px solid rgba(228, 184, 94, 0.6); /* Более заметная золотистая граница */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  z-index: 5;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  margin: 0 15px;
+  margin: 0 20px;
 }
 
 .legend-dot {
-  width: 14px; /* Увеличен размер */
-  height: 14px; /* Увеличен размер */
+  width: 18px; /* Увеличен размер */
+  height: 18px; /* Увеличен размер */
   border-radius: 50%;
   background-color: #2a3f5f;
-  margin-right: 10px;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Добавлено свечение */
+  margin-right: 12px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Усилено свечение */
 }
 
 .legend-selected-dot {
-  width: 14px; /* Увеличен размер */
-  height: 14px; /* Увеличен размер */
+  width: 18px; /* Увеличен размер */
+  height: 18px; /* Увеличен размер */
   border-radius: 50%;
   background-color: white;
   border: 2px solid #2a3f5f;
-  margin-right: 10px;
+  margin-right: 12px;
   box-sizing: border-box;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Добавлено свечение */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Усилено свечение */
 }
 
 .legend-exhibit {
-  width: 22px; /* Увеличен размер */
-  height: 11px; /* Увеличен размер */
+  width: 28px; /* Увеличен размер */
+  height: 14px; /* Увеличен размер */
   background-color: #e4b85e;
-  margin-right: 10px;
-  box-shadow: 0 0 5px rgba(228, 184, 94, 0.7); /* Добавлено свечение */
+  margin-right: 12px;
+  box-shadow: 0 0 8px rgba(228, 184, 94, 0.8); /* Усилено свечение */
 }
 
 .legend-screen {
-  width: 18px; /* Увеличен размер */
-  height: 14px; /* Увеличен размер */
+  width: 24px; /* Увеличен размер */
+  height: 18px; /* Увеличен размер */
   background-color: white;
   border: 1px solid #2a3f5f;
-  margin-right: 10px;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Добавлено свечение */
+  margin-right: 12px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Усилено свечение */
 }
 
 .legend-text {
-  font-size: 16px; /* Увеличен размер шрифта */
+  font-size: 20px; /* Увеличен размер шрифта */
   white-space: nowrap;
   color: #e4b85e; /* Золотистый цвет текста */
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Тень для лучшей читаемости */
-  font-weight: 500; /* Полужирный шрифт */
-  letter-spacing: 0.5px; /* Межбуквенный интервал */
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6); /* Усилена тень для лучшей читаемости */
+  font-weight: 600; /* Более жирный шрифт */
+  letter-spacing: 0.8px; /* Увеличен межбуквенный интервал */
 }
 
 /* --- Адаптивность --- */
@@ -397,41 +417,70 @@
     height: 60vh;
   }
   .map-footer {
-    flex-direction: column;
-    align-items: center;
+    height: 160px; /* Увеличена высота для размещения элементов */
   }
-  .back-button {
-    margin-bottom: 15px;
+  .map-back-button {
+    padding: 12px 25px;
+    font-size: 20px;
   }
   .map-legend {
     flex-wrap: wrap;
     justify-content: center;
+    padding: 15px 20px;
+    width: 90%;
   }
   .legend-item {
-    margin: 4px 8px;
+    margin: 6px 10px;
   }
 }
 
 @media (max-width: 768px) {
   .map-title h1 {
-    font-size: 28px;
+    font-size: 32px; /* Увеличен размер */
   }
   .map-logo {
-    width: 80px;
-    height: 80px;
+    width: 90px; /* Увеличен размер */
+    height: 90px; /* Увеличен размер */
   }
   .corridor-title {
-    font-size: 22px;
+    font-size: 24px; /* Увеличен размер */
   }
   .hall-label {
-    font-size: 16px;
+    font-size: 18px; /* Увеличен размер */
   }
   .nav-dot {
-     width: 8px;
-     height: 8px;
+     width: 10px; /* Увеличен размер */
+     height: 10px; /* Увеличен размер */
+  }
+  .map-footer {
+    height: 180px; /* Увеличена высота для размещения элементов *  }
+  .map-back-button {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  .map-legend {
+    flex-wrap: wrap;
+    padding: 12px 15px;
+    bottom: 5px;
+    width: 95%;
   }
   .legend-text {
-    font-size: 11px;
+    font-size: 16px; /* Увеличен размер */
+  }
+  .legend-item {
+    margin: 5px 8px;
+  }
+  .legend-dot, .legend-selected-dot {
+    width: 16px;
+    height: 16px;
+  }
+  .legend-exhibit {
+    width: 24px;
+    height: 12px;
+  }
+  .legend-screen {
+    width: 20px;
+    height: 16px;
   }
 }
 
@@ -472,4 +521,4 @@
 .star-dot-22 { top: 82%; left: 50%; animation-delay: 0.2s; }
 .star-dot-23 { top: 32%; left: 75%; animation-delay: 1.9s; }
 .star-dot-24 { top: 62%; right: 40%; animation-delay: 3.7s; }
-.star-dot-25 { top: 95%; right: 25%; animation-delay: 2.5s; } 
+.star-dot-25 { top: 95%; right: 25%; animation-delay: 2.5s; }

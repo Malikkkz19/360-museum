@@ -1,4 +1,13 @@
-.pano-container {
+.virtual-tour-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--magistral-font);
+    background-color: #000;
+  }
+  
+  .pano-container {
     width: 100%;
     height: 100vh;
     position: relative;
@@ -214,6 +223,158 @@
 .info-tooltip {
   font-family: var(--magistral-font);
   font-size: 14px;
+}
+
+/* Стили для навигационной панели */
+.tour-navigation-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100;
+  width: auto;
+  padding: 0 20px;
+}
+
+/* Стили для кнопок навигации */
+.nav-button {
+  background-color: rgba(245, 166, 35, 0.9);
+  border: 2px solid #f5a623;
+  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+  font-family: var(--magistral-font);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button:hover {
+  background-color: rgba(245, 166, 35, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Стили для кнопки назад в туре */
+.tour-back-button {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(45deg, rgba(46, 70, 105, 0.8), rgba(72, 104, 153, 0.8)); /* Градиент фона */
+  border: 2px solid #e4b85e; /* Золотистая граница */
+  border-radius: 50px; /* Более округлая форма */
+  color: white;
+  padding: 15px 30px; /* Увеличены отступы */
+  font-size: 22px; /* Увеличен размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(228, 184, 94, 0.4); /* Добавлено свечение */
+  text-transform: uppercase; /* Заглавные буквы */
+  letter-spacing: 1px; /* Межбуквенный интервал */
+  position: absolute;
+  left: -560px;
+  bottom: 25px;
+  z-index: 10;
+}
+
+.back-arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Стили для схемы помещения */
+.room-map-container {
+  background-color: rgba(42, 63, 95, 0.9);
+  border: 2px solid #f5a623;
+  border-radius: 10px;
+  padding: 10px;
+  width: 250px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.room-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.room-map-outline {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #f5a623;
+  position: relative;
+  background-color: white;
+}
+
+/* Точки на карте */
+.map-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2a3f5f;
+  position: absolute;
+  border: 1px solid #f5a623;
+}
+
+.map-dot.active {
+  background-color: #f5a623;
+  box-shadow: 0 0 5px #f5a623;
+}
+
+/* Позиционирование точек */
+.map-dot-1 { top: 20%; left: 10%; }
+.map-dot-2 { top: 20%; left: 50%; }
+.map-dot-3 { top: 20%; right: 10%; }
+.map-dot-4 { top: 80%; left: 10%; }
+.map-dot-5 { top: 80%; left: 50%; }
+.map-dot-6 { top: 80%; right: 10%; }
+.map-dot-7 { top: 50%; left: 50%; }
+.map-dot-8 { top: 50%; right: 20%; }
+
+/* Стенды на карте */
+.map-stand {
+  position: absolute;
+  background-color: rgba(42, 63, 95, 0.7);
+  border: 1px solid #f5a623;
+}
+
+.map-stand-1 {
+  top: 5%;
+  left: 20%;
+  width: 60%;
+  height: 5px;
+}
+
+.map-stand-2 {
+  bottom: 5%;
+  left: 20%;
+  width: 60%;
+  height: 5px;
+}
+
+.map-stand-3 {
+  top: 20%;
+  left: 5%;
+  width: 5px;
+  height: 60%;
+}
+
+.map-stand-4 {
+  top: 20%;
+  right: 5%;
+  width: 5px;
+  height: 60%;
 }
 
 

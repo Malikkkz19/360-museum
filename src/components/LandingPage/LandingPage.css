@@ -355,7 +355,7 @@ html, body {
   background-color: #f8b94a;
 }
 
-/* Ракеты на фоне */
+/* Ракеты и планета на фоне */
 .white-rocket {
   position: absolute;
   top: -3%;
@@ -368,20 +368,19 @@ html, body {
   transform-origin: center center;
 }
 
-.yellow-rocket {
+.planet {
   position: absolute;
-  bottom: 7%;
+  top: -3%;
   right: 5%;
   z-index: 0;
   opacity: 0.9;
-  max-width: 22%; /* +10% */
+  max-width: 24%; /* +10% */
   pointer-events: none;
-  animation: floatYellowRocket 18s ease-in-out infinite;
+  animation: floatPlanet 20s ease-in-out infinite;
   transform-origin: center center;
 }
 
-.white-rocket img,
-.yellow-rocket img {
+.white-rocket img, .planet img {
   width: 100%;
   height: auto;
   filter: drop-shadow(0 0 16.5px rgba(255, 255, 255, 0.4)); /* +10% */
@@ -404,6 +403,24 @@ html, body {
     transform: translateY(0) rotate(0);
   }
 }
+.yellow-rocket {
+  position: absolute;
+  bottom: 7%;
+  right: 5%;
+  z-index: 0;
+  opacity: 0.9;
+  max-width: 22%; /* +10% */
+  pointer-events: none;
+  animation: floatYellowRocket 18s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.white-rocket img,
+.yellow-rocket img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 16.5px rgba(255, 255, 255, 0.4)); /* +10% */
+}
 
 @keyframes floatYellowRocket {
   0% {
@@ -417,6 +434,24 @@ html, body {
   }
   75% {
     transform: translateY(-11px) rotate(-1deg); /* +10% */
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes floatPlanet {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(11px) rotate(-1deg); /* +10% */
+  }
+  50% {
+    transform: translateY(22px) rotate(-2deg); /* +10% */
+  }
+  75% {
+    transform: translateY(11px) rotate(-1deg); /* +10% */
   }
   100% {
     transform: translateY(0) rotate(0);
@@ -447,4 +482,4 @@ html, body {
     padding: 13.2px 33px; /* +10% */
     font-size: 17.6px; /* +10% */
   }
-} 
+}

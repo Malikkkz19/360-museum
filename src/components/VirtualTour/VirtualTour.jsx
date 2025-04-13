@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as Marzipano from 'marzipano';
 import './VirtualTour.css';
 
 const VirtualTour = () => {
   const panoRef = useRef(null);
   const { hallId } = useParams();
+  const navigate = useNavigate();
+  const [currentScene, setCurrentScene] = useState('');
   
   useEffect(() => {
     console.log("Загрузка тура для зала:", hallId);
@@ -205,6 +207,7 @@ const VirtualTour = () => {
         if (sceneTitle) {
           sceneTitle.textContent = sceneMap[id].data.name;
         }
+        setCurrentScene(id);
       }
     }
     
@@ -238,7 +241,63 @@ const VirtualTour = () => {
     };
   }, [hallId]);
 
-  return <div ref={panoRef} className="pano-container"></div>;
+  // Функции для кнопок навигации
+  const handleBackClick = () => {
+    window.history.back();
+  };
+
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
+  const handleMapClick = () => {
+    navigate('/map');
+  };
+
+  return (
+    <div className="virtual-tour-container">
+      <div ref={panoRef} className="pano-container"></div>
+      
+      {/* Навигационная панель */}
+      <div className="tour-navigation-panel">
+        <button className="nav-button tour-back-button" onClick={handleBackClick}>
+          <span className="back-arrow">←</span>
+          <span className="button-text">назад</span>
+        </button>
+        
+        <button className="nav-button home-button" onClick={handleHomeClick}>
+          <span className="button-text">главная страница</span>
+        </button>
+        
+        <div className="room-map-container">
+          <div className="room-map">
+            {/* Схема помещения */}
+            <div className="room-map-outline">
+              {/* Точки на карте */}
+              <div className="map-dot map-dot-1"></div>
+              <div className="map-dot map-dot-2"></div>
+              <div className="map-dot map-dot-3"></div>
+              <div className="map-dot map-dot-4"></div>
+              <div className="map-dot map-dot-5"></div>
+              <div className="map-dot map-dot-6"></div>
+              <div className="map-dot map-dot-7 active"></div>
+              <div className="map-dot map-dot-8"></div>
+              
+              {/* Прямоугольники стендов */}
+              <div className="map-stand map-stand-1"></div>
+              <div className="map-stand map-stand-2"></div>
+              <div className="map-stand map-stand-3"></div>
+              <div className="map-stand map-stand-4"></div>
+            </div>
+          </div>
+        </div>
+        
+        <button className="nav-button map-button" onClick={handleMapClick}>
+          <span className="button-text">карта музея</span>
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default VirtualTour;

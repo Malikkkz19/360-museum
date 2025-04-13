@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MapPage.css';
 import yellowRocket from '../../assets/halls/yellow_rocket.png';
+import museumScheme from '../../assets/halls/scheme.svg';
 
 function MapPage() {
   const navigate = useNavigate();
@@ -31,14 +32,14 @@ function MapPage() {
           </div>
         </div>
         
-        {/* Карта - только пустая белая рамка */}
+        {/* Карта музея со схемой */}
         <div className="museum-map">
-          {/* Пустая рамка для будущего наполнения */}
+          <img src={museumScheme} alt="Схема музея" className="museum-scheme" />
         </div>
         
         {/* Футер */} 
         <div className="map-footer">
-          <button className="back-button" onClick={handleBackClick}>
+          <button className="map-back-button" onClick={handleBackClick}>
             <span className="back-arrow">←</span>
             <span className="back-text">назад</span>
           </button>
@@ -66,4 +67,4 @@ function MapPage() {
   );
 }
 
-export default MapPage; 
+export default MapPage;
