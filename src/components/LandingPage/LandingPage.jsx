@@ -129,7 +129,7 @@ function LandingPage() {
 
       <section className="landing-main">
         <div className="virtual-tour-wrapper">
-          <h3 className="virtual-tour-title">ВИРТУАЛЬНЫЙ ПУТЕШЕСТВИЕ</h3>
+          <h3 className="virtual-tour-title">ВИРТУАЛЬНОЕ ПУТЕШЕСТВИЕ</h3>
           <div className="virtual-tour-title-underline"></div>
         </div>
 

@@ -1,147 +1,271 @@
 .virtual-tour-container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    font-family: var(--magistral-font);
-    background-color: #000;
-  }
-  
-  .pano-container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    font-family: var(--magistral-font);
-    background-color: #000;
-  }
-  
-  .hotspot-link {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(245, 166, 35, 0.8);
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .hotspot-link:before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 12px solid #fff;
-    transform: rotate(90deg);
-  }
-  
-  .hotspot-link:hover {
-    background-color: rgba(245, 166, 35, 1);
-  }
-  
-  .hotspot-tooltip {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(42, 63, 95, 0.9);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-    font-family: var(--magistral-font);
-    font-size: 14px;
-  }
-  
-  .hotspot-link:hover .hotspot-tooltip {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .scene-list {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(42, 63, 95, 0.8);
-    border-radius: 5px;
-    padding: 10px;
-    z-index: 10;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .scene-item {
-    color: white;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 5px 0;
-    font-family: var(--magistral-font);
-    transition: background-color 0.3s;
-  }
-  
-  .scene-item:hover {
-    background-color: rgba(245, 166, 35, 0.6);
-    border-radius: 3px;
-  }
-  
-  .scene-title {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(42, 63, 95, 0.8);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-family: var(--magistral-font);
-    font-size: 18px;
-    font-weight: bold;
-  }
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--magistral-font);
+  background-color: #000;
+}
+
+/* Заголовок академии */
+.academy-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(42, 63, 95, 0.95),
+    rgba(56, 84, 126, 0.95)
+  );
+  color: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  font-family: var(--magistral-font);
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1000;
+  border: 3px solid #f5a623;
+  box-shadow: 0 0 25px rgba(245, 166, 35, 0.8),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.pano-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--magistral-font);
+  background-color: #000;
+}
+
+.hotspot-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(245, 166, 35, 0.8);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotspot-link:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #fff;
+  transform: rotate(90deg);
+}
+
+.hotspot-link:hover {
+  background-color: rgba(245, 166, 35, 1);
+}
+
+.hotspot-tooltip {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(42, 63, 95, 0.9);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-family: var(--magistral-font);
+  font-size: 14px;
+}
+
+.hotspot-link:hover .hotspot-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Скрываем список сцен (кнопки "Позиция...") */
+.scene-list {
+  display: none;
+}
+
+.scene-item {
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 5px 0;
+  font-family: var(--magistral-font);
+  transition: background-color 0.3s;
+}
+
+.scene-item:hover {
+  background-color: rgba(245, 166, 35, 0.6);
+  border-radius: 3px;
+}
+
+.scene-title {
+  display: none; /* Скрываем элемент "Позиция 1" */
+}
 
 /* Добавьте это в ваш файл VirtualTour.css */
-.hotspot-link, .info-hotspot {
+.hotspot-link,
+.info-hotspot {
   position: relative;
   cursor: pointer;
 }
 
-.hotspot-tooltip, .info-tooltip {
+.hotspot-tooltip,
+.info-tooltip {
   visibility: hidden;
-  background-color: black;
+  background-color: rgba(42, 63, 95, 0.95);
   color: #fff;
-  text-align: center;
+  text-align: left;
   border-radius: 10px;
-  border: 2px solid #2e77ec;
-  font-size: 20px;
-  padding: 15px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%; /* Позиция всплывающего текста */
+  border: 2px solid #f5a623;
+  font-size: 16px;
+  padding: 20px;
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
   left: 50%;
-  margin-left: -60px;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
+  width: 80%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.hotspot-link:hover .hotspot-tooltip, .info-hotspot:hover .info-tooltip {
+.info-tooltip.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.info-tooltip-header {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #f5a623;
+  font-family: var(--magistral-font);
+  letter-spacing: 1px;
+}
+
+.info-tooltip-content {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.info-tooltip-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+.info-tooltip-video {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.info-tooltip-video iframe {
+  width: 100%;
+  height: 250px;
+  border: none;
+  border-radius: 5px;
+}
+
+.info-tooltip-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: #f5a623;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.info-tooltip-close:hover {
+  transform: scale(1.1);
+}
+
+.info-tooltip-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.info-tooltip-backdrop.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hotspot-link:hover .hotspot-tooltip {
   visibility: visible;
   opacity: 1;
 }
 .info-hotspot {
-  width: 30px;
-  height: 30px;
-  background-color: rgba(51, 153, 255, 0.8);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
   position: relative;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.info-hotspot::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../public/images/info-hotspot.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.info-hotspot:hover {
+  transform: scale(1.1);
 }
 
 /* Стили для точки, при наведении на которую появляется изображение */
@@ -228,25 +352,47 @@
 /* Стили для навигационной панели */
 .tour-navigation-panel {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 30px;
+  right: 20px; /* Фиксированная позиция в правом нижнем углу */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   z-index: 100;
   width: auto;
-  padding: 0 20px;
+  padding: 25px 20px;
+  background-color: rgba(42, 63, 95, 0.85);
+  border-radius: 15px;
+  border: 2px solid #f5a623;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  /* Убрано плавное появление */
 }
+
+/* Контейнер для панели навигации - больше не нужен для эффекта наведения */
+.tour-navigation-container {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  z-index: 99;
+  display: none; /* Скрываем контейнер, так как он больше не нужен */
+}
+
+/* Убрано правило для показа панели при наведении */
 
 /* Стили для кнопок навигации */
 .nav-button {
-  background-color: rgba(245, 166, 35, 0.9);
+  background: linear-gradient(
+    45deg,
+    rgba(245, 166, 35, 0.9),
+    rgba(255, 196, 85, 0.9)
+  );
   border: 2px solid #f5a623;
   border-radius: 30px;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 20px;
   font-family: var(--magistral-font);
   font-size: 16px;
   font-weight: bold;
@@ -254,6 +400,12 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 10px 0;
+  width: 200px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 }
 
 .nav-button:hover {
@@ -266,47 +418,79 @@
 .tour-back-button {
   display: flex;
   align-items: center;
-  background: linear-gradient(45deg, rgba(46, 70, 105, 0.8), rgba(72, 104, 153, 0.8)); /* Градиент фона */
-  border: 2px solid #e4b85e; /* Золотистая граница */
-  border-radius: 50px; /* Более округлая форма */
+  background: linear-gradient(
+    45deg,
+    rgba(46, 70, 105, 0.9),
+    rgba(72, 104, 153, 0.9)
+  ); /* Градиент фона */
+  border: 2px solid #f5a623; /* Золотистая граница */
+  border-radius: 30px; /* Более округлая форма */
   color: white;
-  padding: 15px 30px; /* Увеличены отступы */
-  font-size: 22px; /* Увеличен размер шрифта */
+  padding: 12px 40px; /* Отступы */
+  font-size: 18px; /* Размер шрифта */
   font-weight: bold; /* Жирный шрифт */
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 0 15px rgba(228, 184, 94, 0.4); /* Добавлено свечение */
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(245, 166, 35, 0.5); /* Добавлено свечение */
   text-transform: uppercase; /* Заглавные буквы */
   letter-spacing: 1px; /* Межбуквенный интервал */
   position: absolute;
-  left: -560px;
-  bottom: 25px;
-  z-index: 10;
+  left: 20px; /* Позиция в левом углу */
+  top: 20px; /* Позиция в верхнем углу */
+  z-index: 1001; /* Выше других элементов */
 }
 
 .back-arrow {
   font-size: 20px;
   line-height: 1;
+  margin-right: 5px;
+}
+
+.tour-back-button:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(72, 104, 153, 0.9),
+    rgba(46, 70, 105, 0.9)
+  );
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(245, 166, 35, 0.7), 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* Стили для схемы помещения */
 .room-map-container {
-  background-color: rgba(42, 63, 95, 0.9);
-  border: 2px solid #f5a623;
-  border-radius: 10px;
-  padding: 10px;
-  width: 250px;
-  height: 150px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(42, 63, 95, 0.95),
+    rgba(32, 48, 73, 0.95)
+  );
+  border: 3px solid #f5a623;
+  border-radius: 15px;
+  padding: 15px;
+  width: 350px;
+  height: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 25px rgba(245, 166, 35, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-map-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(245, 166, 35, 0.7),
+    inset 0 0 15px rgba(255, 255, 255, 0.15);
 }
 
 .room-map {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .room-map-outline {
@@ -314,39 +498,91 @@
   height: 100%;
   border: 2px solid #f5a623;
   position: relative;
-  background-color: white;
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 /* Точки на карте */
 .map-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: #2a3f5f;
   position: absolute;
-  border: 1px solid #f5a623;
+  border: 2px solid #f5a623;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.map-dot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(245, 166, 35, 0.6);
 }
 
 .map-dot.active {
   background-color: #f5a623;
-  box-shadow: 0 0 5px #f5a623;
+  box-shadow: 0 0 10px #f5a623, 0 0 15px rgba(245, 166, 35, 0.4);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px #f5a623;
+  }
+  50% {
+    box-shadow: 0 0 15px #f5a623, 0 0 20px rgba(245, 166, 35, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px #f5a623;
+  }
 }
 
 /* Позиционирование точек */
-.map-dot-1 { top: 20%; left: 10%; }
-.map-dot-2 { top: 20%; left: 50%; }
-.map-dot-3 { top: 20%; right: 10%; }
-.map-dot-4 { top: 80%; left: 10%; }
-.map-dot-5 { top: 80%; left: 50%; }
-.map-dot-6 { top: 80%; right: 10%; }
-.map-dot-7 { top: 50%; left: 50%; }
-.map-dot-8 { top: 50%; right: 20%; }
+.map-dot-1 {
+  top: 20%;
+  left: 10%;
+}
+.map-dot-2 {
+  top: 20%;
+  left: 50%;
+}
+.map-dot-3 {
+  top: 20%;
+  right: 10%;
+}
+.map-dot-4 {
+  top: 80%;
+  left: 10%;
+}
+.map-dot-5 {
+  top: 80%;
+  left: 50%;
+}
+.map-dot-6 {
+  top: 80%;
+  right: 10%;
+}
+.map-dot-7 {
+  top: 50%;
+  left: 50%;
+}
+.map-dot-8 {
+  top: 50%;
+  right: 20%;
+}
 
 /* Стенды на карте */
 .map-stand {
   position: absolute;
-  background-color: rgba(42, 63, 95, 0.7);
+  background: linear-gradient(
+    90deg,
+    rgba(42, 63, 95, 0.8),
+    rgba(56, 84, 126, 0.8)
+  );
   border: 1px solid #f5a623;
+  box-shadow: 0 0 5px rgba(245, 166, 35, 0.3);
 }
 
 .map-stand-1 {
@@ -377,4 +613,123 @@
   height: 60%;
 }
 
+/* Стили для кнопки описания зала */
+.room-description-button {
+  background: linear-gradient(
+    45deg,
+    rgba(245, 166, 35, 0.9),
+    rgba(255, 196, 85, 0.9)
+  );
+  border: 2px solid #f5a623;
+  border-radius: 30px;
+  color: white;
+  padding: 12px 20px;
+  font-family: var(--magistral-font);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 10px 0;
+  width: 200px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
 
+.room-description-button:hover {
+  background-color: rgba(245, 166, 35, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Стили для выезжающей панели с описанием зала */
+.room-description-panel {
+  position: fixed;
+  top: 0;
+  right: -50%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(42, 63, 95, 0.95);
+  border-left: 3px solid #f5a623;
+  z-index: 1000;
+  transition: right 0.5s ease;
+  overflow-y: auto;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  box-sizing: border-box;
+  font-family: var(--magistral-font);
+}
+
+.room-description-panel.open {
+  right: 0;
+}
+
+.room-description-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  color: #f5a623;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.room-description-close:hover {
+  transform: scale(1.1);
+}
+
+.room-description-content {
+  padding: 20px 0;
+}
+
+.room-description-title {
+  color: #f5a623;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.room-description-text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.room-description-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.room-description-image-container {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 2px solid #f5a623;
+  height: 200px;
+}
+
+.room-description-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.room-description-image:hover {
+  transform: scale(1.05);
+}
