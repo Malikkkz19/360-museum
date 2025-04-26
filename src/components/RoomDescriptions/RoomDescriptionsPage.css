@@ -1,0 +1,369 @@
+.room-descriptions-page {
+  position: relative;
+  background-color: #2a3f5f; /* Темно-синий фон такой же как на LandingPage */
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+  font-family: var(--magistral-font);
+  /* Основной ключ к решению проблемы: */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Повторно используем стили для звезд из LandingPage */
+.twinkling-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star-dot {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.4);
+  animation: twinkle 4s infinite;
+}
+
+/* Генерируем случайные позиции для звезд */
+.star-dot:nth-child(3n + 1) {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.5);
+}
+.star-dot:nth-child(3n + 2) {
+  width: 1px;
+  height: 1px;
+  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Анимация мерцания */
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+/* Основное содержимое страницы - здесь основное исправление прокрутки */
+.room-descriptions-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #e4b85e rgba(46, 70, 105, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Заголовок */
+.room-descriptions-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+}
+
+.room-descriptions-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+  gap: 15px; /* Добавляем пробел между словами заголовка */
+}
+
+.room-descriptions-title h1 {
+  font-size: 80px;
+  margin: 0;
+  color: #e4b85e; /* Золотистый цвет */
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(228, 184, 94, 0.5);
+  letter-spacing: 3px;
+}
+
+/* Декоративные элементы по бокам заголовка */
+.room-descriptions-title::before,
+.room-descriptions-title::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e4b85e'%3E%3Cpath d='M12 0L9 4l-5 1 3 4-1 5 5-2 5 2-1-5 3-4-5-1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+.room-descriptions-title::before {
+  left: -80px;
+}
+
+.room-descriptions-title::after {
+  right: -80px;
+}
+
+/* Контейнер с описаниями залов */
+.room-descriptions-container {
+  width: 80%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.room-description {
+  background: rgba(46, 70, 105, 0.7);
+  border: 2px solid #e4b85e;
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 0 0 15px rgba(228, 184, 94, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.room-description:hover {
+  background: rgba(46, 70, 105, 0.9);
+  box-shadow: 0 0 20px rgba(228, 184, 94, 0.5);
+  transform: translateY(-5px);
+}
+
+.room-description.expanded {
+  background: rgba(46, 70, 105, 0.9);
+  box-shadow: 0 0 25px rgba(228, 184, 94, 0.6);
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-description h2 {
+  color: #e4b85e;
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.expand-icon {
+  color: #e4b85e;
+  font-size: 32px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e4b85e;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.room-description:hover .expand-icon {
+  background-color: rgba(228, 184, 94, 0.2);
+}
+
+.room-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 15px;
+  transition: max-height 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity 0.5s ease-in, transform 0.5s ease-out;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.room-content.expanded {
+  max-height: 2000px; /* Увеличенная высота для всего контента */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  padding-top: 10px;
+  overflow-y: visible;
+}
+
+/* Стили для скроллбара */
+.room-descriptions-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.room-descriptions-content::-webkit-scrollbar-track {
+  background: rgba(46, 70, 105, 0.5);
+  border-radius: 10px;
+}
+
+.room-descriptions-content::-webkit-scrollbar-thumb {
+  background-color: #e4b85e;
+  border-radius: 10px;
+}
+
+.room-images {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.room-images img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.room-description:hover .room-images img {
+  transform: scale(1.03);
+}
+
+.room-description p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Футер */
+.room-descriptions-footer {
+  width: 80%;
+  max-width: 1200px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+/* Кнопка назад */
+.room-descriptions-back-button {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    45deg,
+    rgba(46, 70, 105, 0.8),
+    rgba(72, 104, 153, 0.8)
+  );
+  border: 2px solid #e4b85e;
+  border-radius: 50px;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--magistral-font);
+}
+
+.room-descriptions-back-button:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(72, 104, 153, 0.8),
+    rgba(46, 70, 105, 0.8)
+  );
+  box-shadow: 0 0 15px rgba(228, 184, 94, 0.5);
+  transform: scale(1.05);
+}
+
+.back-arrow {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .room-descriptions-title h1 {
+    font-size: 60px;
+  }
+
+  .room-descriptions-logo {
+    width: 120px;
+    height: 120px;
+    margin: 0 20px;
+  }
+
+  .room-description h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-descriptions-title h1 {
+    font-size: 40px;
+  }
+
+  .room-descriptions-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 15px;
+  }
+
+  .room-descriptions-container {
+    width: 90%;
+  }
+
+  .room-description {
+    padding: 15px 20px;
+  }
+
+  .room-description h2 {
+    font-size: 24px;
+  }
+
+  .room-description p {
+    font-size: 16px;
+  }
+
+  .room-descriptions-back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-descriptions-title h1 {
+    font-size: 30px;
+  }
+
+  .room-descriptions-logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px;
+  }
+
+  .room-description h2 {
+    font-size: 20px;
+  }
+
+  .room-description p {
+    font-size: 14px;
+  }
+}

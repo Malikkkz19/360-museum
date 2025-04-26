@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as Marzipano from "marzipano";
 import "./VirtualTour.css";
 import "./VirtualTourResponsive.css";
+import yellowRocket from "../../assets/halls/yellow_rocket.png";
 
 const VirtualTour = () => {
   const panoRef = useRef(null);
@@ -435,6 +436,45 @@ const VirtualTour = () => {
     navigate("/map");
   };
 
+  // Данные о залах музея для линейки залов внизу страницы
+  const museumHalls = [
+    {
+      id: "hall1",
+      name: "Космический зал",
+      description: "История космонавтики",
+      image: "/images/1.png",
+    },
+    {
+      id: "hall2",
+      name: "Зал ракетостроения",
+      description: "Развитие ракетной техники",
+      image: "/images/2.png",
+    },
+    {
+      id: "hall3",
+      name: "Зал спутников",
+      description: "Искусственные спутники Земли",
+      image: "/images/3.png",
+    },
+    {
+      id: "hall4",
+      name: "Зал космонавтов",
+      description: "Герои космоса",
+      image: "/images/4.png",
+    },
+    {
+      id: "hall5",
+      name: "Зал будущего",
+      description: "Перспективы космонавтики",
+      image: "/images/5.png",
+    },
+  ];
+
+  // Функция для перехода в другой зал
+  const navigateToHall = (hallId) => {
+    navigate(`/virtual-tour/${hallId}`);
+  };
+
   return (
     <div className="virtual-tour-container">
       <div ref={panoRef} className="pano-container"></div>
@@ -442,6 +482,10 @@ const VirtualTour = () => {
       {/* Заголовок академии */}
       <div className="academy-title">
         Военно-космическая академия им. А.Ф. Можайского
+      </div>
+
+      <div className="academy-logo">
+        <img src={yellowRocket} alt="Ракета" />
       </div>
 
       {/* Кнопка назад */}
@@ -489,6 +533,31 @@ const VirtualTour = () => {
             <div className="map-stand map-stand-3"></div>
             <div className="map-stand map-stand-4"></div>
           </div>
+        </div>
+      </div>
+
+      {/* Линейка с залами внизу страницы */}
+      <div className="halls-bar-container">
+        <div className="tour-halls-lineup">
+          {museumHalls.map((hall) => (
+            <div
+              key={hall.id}
+              className={`tour-hall-card ${hall.id === hallId ? "active" : ""}`}
+              onClick={() => navigateToHall(hall.id)}
+            >
+              <div className="tour-hall-image-container">
+                <img
+                  src={hall.image}
+                  alt={hall.name}
+                  className="tour-hall-image"
+                />
+              </div>
+              <div className="tour-hall-info">
+                <h3 className="tour-hall-name">{hall.name}</h3>
+                <p className="tour-hall-description">{hall.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

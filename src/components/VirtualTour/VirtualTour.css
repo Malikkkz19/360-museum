@@ -10,7 +10,7 @@
 /* Заголовок академии */
 .academy-title {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(
@@ -122,6 +122,93 @@
 .info-hotspot {
   position: relative;
   cursor: pointer;
+}
+
+/* Стили для карточек залов в линейке на странице виртуального тура */
+.tour-hall-card {
+  flex: 0 0 auto;
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  perspective: 1200px;
+}
+
+.tour-hall-card:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.tour-hall-image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  border: 2px solid rgba(245, 166, 35, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 255, 255, 0.1);
+  height: 100px;
+}
+
+.tour-hall-card:hover .tour-hall-image-container {
+  border-color: #f5a623;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 166, 35, 0.6);
+  transform: translateY(-8px) rotateY(5deg);
+}
+
+.tour-hall-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.tour-hall-card:hover .tour-hall-image {
+  transform: scale(1.05);
+}
+
+.tour-hall-info {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tour-hall-card:hover .tour-hall-info {
+  transform: translateY(-3px);
+}
+
+.tour-hall-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  font-family: var(--magistral-font);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.8px;
+}
+
+.tour-hall-description {
+  font-size: 12px;
+  background: linear-gradient(90deg, #f5a623, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 3px 0 0;
+  font-family: var(--magistral-font);
+  font-weight: 600;
+}
+
+/* Контейнер для линейки залов */
+.tour-halls-lineup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hotspot-tooltip,
@@ -426,8 +513,8 @@
   border: 2px solid #f5a623; /* Золотистая граница */
   border-radius: 30px; /* Более округлая форма */
   color: white;
-  padding: 12px 40px; /* Отступы */
-  font-size: 18px; /* Размер шрифта */
+  padding: 18px 32px; /* Отступы */
+  font-size: 24px; /* Размер шрифта */
   font-weight: bold; /* Жирный шрифт */
   cursor: pointer;
   transition: all 0.3s ease;
@@ -435,13 +522,13 @@
   text-transform: uppercase; /* Заглавные буквы */
   letter-spacing: 1px; /* Межбуквенный интервал */
   position: absolute;
-  left: 20px; /* Позиция в левом углу */
-  top: 20px; /* Позиция в верхнем углу */
+  left: 60px; /* Позиция в левом углу */
+  top: 40px; /* Позиция в верхнем углу */
   z-index: 1001; /* Выше других элементов */
 }
 
 .back-arrow {
-  font-size: 20px;
+  font-size: 35px;
   line-height: 1;
   margin-right: 5px;
 }
@@ -732,4 +819,277 @@
 
 .room-description-image:hover {
   transform: scale(1.05);
+}
+
+.academy-logo {
+  width: 140px; /* Увеличен размер */
+  height: 140px; /* Увеличен размер */
+  margin: 0 30px; /* Увеличены отступы */
+  position: absolute;
+  right: 3px;
+  top: 10px;
+}
+
+.academy-logo img {
+  max-width: 100%;
+  max-height: 100%; /* Небольшой наклон ракеты */
+  filter: drop-shadow(
+    0 0 10px rgba(226, 174, 70, 0.9)
+  ); /* Золотистое свечение */
+}
+
+/* Стили для линейки с залами внизу страницы */
+.halls-bar-container {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  max-width: 1100px;
+  z-index: 100;
+  background: linear-gradient(
+    to right,
+    rgba(42, 63, 95, 0),
+    rgba(42, 63, 95, 0.85),
+    rgba(42, 63, 95, 0)
+  );
+  padding: 10px 0;
+  border-radius: 12px;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.halls-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 8px 15px;
+  scrollbar-width: thin;
+  scrollbar-color: #f5a623 rgba(42, 63, 95, 0.5);
+}
+
+.halls-bar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.halls-bar::-webkit-scrollbar-track {
+  background: rgba(42, 63, 95, 0.5);
+  border-radius: 10px;
+}
+
+.halls-bar::-webkit-scrollbar-thumb {
+  background-color: #f5a623;
+  border-radius: 10px;
+}
+
+/* Стили для карточек залов */
+.hall-card {
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  perspective: 1200px;
+  width: 180px;
+  margin: 5px;
+}
+
+.hall-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.hall-card.active .hall-image-container {
+  border-color: #f5a623;
+  box-shadow: 0 0 20px rgba(245, 166, 35, 0.8), 0 0 30px rgba(245, 166, 35, 0.4);
+  animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+  0% {
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.8),
+      0 0 30px rgba(245, 166, 35, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(245, 166, 35, 0.9),
+      0 0 40px rgba(245, 166, 35, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.8),
+      0 0 30px rgba(245, 166, 35, 0.4);
+  }
+}
+
+.hall-image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 2px solid rgba(245, 166, 35, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.hall-card:hover .hall-image-container {
+  border-color: #f5a623;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 166, 35, 0.7);
+  transform: translateY(-10px);
+}
+
+.hall-card.active {
+  transform: scale(1.05);
+}
+
+.hall-card.active .hall-name {
+  color: #f5a623;
+  text-shadow: 0 0 5px rgba(245, 166, 35, 0.5);
+}
+
+.hall-card.active .hall-description {
+  background: linear-gradient(90deg, #ffffff, #ffd700);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hall-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.hall-card:hover .hall-image {
+  transform: scale(1.05);
+}
+
+.hall-info {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.hall-card:hover .hall-info {
+  transform: translateY(-5px);
+}
+
+.hall-name {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  font-family: var(--magistral-font);
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1.2px;
+}
+
+.hall-description {
+  font-size: 18px;
+  background: linear-gradient(90deg, #f5a623, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 8px 0 0;
+  font-family: var(--magistral-font);
+  font-weight: 600;
+}
+
+/* Адаптивные стили для линейки с залами */
+@media (max-width: 1024px) {
+  .halls-bar-container {
+    width: 90%;
+    bottom: 8px;
+  }
+
+  .hall-card {
+    width: 140px;
+  }
+
+  .hall-image-container {
+    height: 90px;
+  }
+
+  .hall-name {
+    font-size: 15px;
+  }
+
+  .hall-description {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .halls-bar-container {
+    width: 95%;
+    bottom: 5px;
+    padding: 8px 0;
+  }
+
+  .halls-bar {
+    gap: 12px;
+    padding: 5px 12px;
+  }
+
+  .hall-card {
+    width: 130px;
+  }
+
+  .hall-image-container {
+    height: 80px;
+    margin-bottom: 4px;
+  }
+
+  .hall-name {
+    font-size: 13px;
+  }
+
+  .hall-description {
+    font-size: 10px;
+  }
+
+  /* Корректировка положения других элементов для мобильных устройств */
+  .room-map-container {
+    bottom: 100px;
+    width: 250px;
+    height: 160px;
+  }
+
+  .tour-navigation-panel {
+    bottom: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .halls-bar-container {
+    width: 98%;
+    bottom: 3px;
+    padding: 6px 0;
+  }
+
+  .halls-bar {
+    gap: 8px;
+  }
+
+  .hall-card {
+    width: 110px;
+  }
+
+  .hall-image-container {
+    height: 70px;
+  }
+
+  .hall-name {
+    font-size: 11px;
+  }
+
+  .hall-description {
+    font-size: 9px;
+  }
 }

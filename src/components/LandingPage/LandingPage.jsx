@@ -75,6 +75,11 @@ function LandingPage() {
     navigate("/map");
   };
 
+  const handleRoomDescriptionsClick = () => {
+    // Действие для кнопки "ОПИСАНИЕ ЗАЛОВ"
+    navigate("/room-descriptions");
+  };
+
   return (
     <div className="landing-page">
       {/* Мерцающие точки-звезды на фоне */}
@@ -200,8 +205,16 @@ function LandingPage() {
           ))}
         </div>
 
-        <div className="map-button-container" onClick={handleMapClick}>
-          <button className="map-button">КАРТА МУЗЕЯ</button>
+        <div className="landing-footer">
+          <button className="map-button" onClick={handleMapClick}>
+            КАРТА МУЗЕЯ
+          </button>
+          <button
+            className="room-descriptions-button"
+            onClick={handleRoomDescriptionsClick}
+          >
+            ОПИСАНИЕ ЗАЛОВ
+          </button>
         </div>
       </section>
 

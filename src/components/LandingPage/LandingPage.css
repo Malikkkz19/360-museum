@@ -272,12 +272,12 @@ body {
 /* Основной контент - перестроено для нового макета */
 .landing-main {
   display: grid;
-  grid-template-columns: 150px 1fr 150px; /* Колонки для кнопок и центрального контента */
+  grid-template-columns: 350px 1fr 350px; /* Увеличены колонки для кнопок и центрального контента */
   grid-template-rows: auto 1fr auto; /* Строки для заголовка, слайд-шоу/кнопок, кнопки карты */
   align-items: center; /* Выравнивание по центру по вертикали */
   justify-items: center; /* Выравнивание по центру по горизонтали */
   width: 100%;
-  max-width: 1600px; /* Увеличено для размещения колонок */
+  max-width: 1800px; /* Увеличено для размещения колонок */
   margin: 0 auto; /* Центрирование основного блока */
   position: relative;
   z-index: 1;
@@ -285,7 +285,7 @@ body {
     100vh - 180px
   ); /* Адаптивная высота, учитывая заголовок и отступы */
   padding: 10px 0; /* Уменьшены вертикальные отступы */
-  gap: 10px; /* Уменьшено пространство между элементами сетки */
+  gap: 15px; /* Увеличено пространство между элементами сетки */
 }
 
 .virtual-tour-wrapper {
@@ -389,21 +389,23 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center; /* Центрирование кнопок по вертикали */
-  gap: -5px; /* Пространство между кнопками */
+  gap: 10px; /* Увеличено пространство между кнопками */
   height: 100%; /* Занимают всю высоту строки */
   align-self: center; /* Выравнивание по центру строки */
+  margin-top: -30px; /* Поднимаем кнопки выше */
+  z-index: 5; /* Увеличиваем z-index, чтобы кнопки были видны */
 }
 
 .halls-left {
   grid-column: 1 / 2; /* Левая колонка */
   align-items: flex-start; /* Выравнивание кнопок по левому краю */
-  padding-left: 20px;
+  padding-left: 30px; /* Увеличен отступ слева */
 }
 
 .halls-right {
   grid-column: 3 / 4; /* Правая колонка */
   align-items: flex-end; /* Выравнивание кнопок по правому краю */
-  padding-right: 20px;
+  padding-right: 30px; /* Увеличен отступ справа */
 }
 
 /* Карточка зала - адаптация для вертикального расположения */
@@ -412,40 +414,40 @@ body {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
   perspective: 1200px;
-  width: 200px; /* Увеличена ширина кнопок */
-  margin: 15px 0; /* Увеличен отступ между кнопками */
+  width: 320px; /* Еще больше увеличена ширина кнопок */
+  margin: 25px 0; /* Увеличен отступ между кнопками */
 }
 
 .hall-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.2); /* Еще больше увеличен эффект при наведении */
   z-index: 10;
 }
 
 .hall-image-container {
-  border-radius: 20px; /* Увеличен радиус скругления */
+  border-radius: 25px; /* Увеличен радиус скругления */
   overflow: hidden;
-  margin-bottom: 12px;
-  border: 3px solid rgba(245, 166, 35, 0.3); /* Добавлена золотистая рамка */
+  margin-bottom: 18px;
+  border: 6px solid rgba(245, 166, 35, 0.5); /* Усилена золотистая рамка */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.1); /* Улучшенная тень */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.25); /* Улучшенная тень */
 }
 
 .hall-card:hover .hall-image-container {
   border-color: #f5a623; /* Яркая золотистая рамка при наведении */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 166, 35, 0.6); /* Усиленная тень с золотистым свечением */
-  transform: translateY(-8px); /* Увеличено смещение при наведении */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 166, 35, 0.8); /* Усиленная тень с золотистым свечением */
+  transform: translateY(-15px); /* Увеличено смещение при наведении */
 }
 
 .hall-image {
   width: 100%;
-  height: 150px; /* Увеличена высота изображения */
+  height: 220px; /* Значительно увеличена высота изображения */
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
 
 .hall-card:hover .hall-image {
-  transform: scale(1.055); /* +10% */
+  transform: scale(1.08); /* Увеличен эффект масштабирования при наведении */
 }
 
 .hall-info {
@@ -454,26 +456,28 @@ body {
 }
 
 .hall-card:hover .hall-info {
-  transform: translateY(-3.3px); /* +10% */
+  transform: translateY(
+    -5px
+  ); /* Увеличен эффект смещения текста при наведении */
 }
 
 .hall-name {
-  font-size: 24px; /* Увеличен размер шрифта */
+  font-size: 32px; /* Еще больше увеличен размер шрифта */
   font-weight: bold;
   color: #fff;
   margin: 0;
   font-family: var(--magistral-font);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Добавлена тень для текста */
-  letter-spacing: 1px; /* Увеличен межбуквенный интервал */
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Усилена тень для текста */
+  letter-spacing: 1.5px; /* Увеличен межбуквенный интервал */
 }
 
 .hall-description {
-  font-size: 17px; /* Увеличен размер шрифта */
+  font-size: 24px; /* Еще больше увеличен размер шрифта */
   background: linear-gradient(90deg, #f5a623, #ffd700); /* Градиентный текст */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 6px 0 0; /* Увеличен отступ */
+  margin: 10px 0 0; /* Увеличен отступ */
   font-family: var(--magistral-font);
   font-weight: 600; /* Полужирный шрифт */
 }
@@ -484,11 +488,46 @@ body {
   grid-row: 3 / 4;
   cursor: pointer;
   position: relative;
-  margin-top: -110px; /* Поднимаем выше */
+  margin-top: -150px; /* Поднимаем еще выше */
   margin-bottom: 10px; /* Оставляем нижний отступ */
   text-align: center;
   perspective: 1100px; /* +10% */
   align-self: start; /* Выравнивание по верху строки */
+  z-index: 10; /* Увеличиваем z-index, чтобы кнопка была видна */
+}
+
+/* Футер с кнопками */
+.landing-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: -30px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Кнопка описания залов */
+.room-descriptions-button {
+  background-color: #f5a623; /* Золотистый фон */
+  color: #ffffff; /* Белый текст */
+  border: none;
+  border-radius: 33px;
+  padding: 17.6px 55px;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(245, 166, 35, 0.3);
+  font-family: var(--magistral-font);
+}
+
+.room-descriptions-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 166, 35, 0.6);
 }
 
 /* Кнопка карты музея */
@@ -496,21 +535,21 @@ body {
   background-color: #f5a623; /* Золотистый фон */
   color: #ffffff; /* Белый текст */
   border: none;
-  border-radius: 33px; /* +10% */
-  padding: 17.6px 55px; /* +10% */
-  font-size: 26.4px; /* +10% */
+  border-radius: 33px;
+  padding: 17.6px 55px;
+  font-size: 22px;
   font-weight: bold;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  letter-spacing: 2.2px; /* +10% */
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(245, 166, 35, 0.3);
   font-family: var(--magistral-font);
-  box-shadow: 0 4.4px 8.8px rgba(0, 0, 0, 0.2); /* +10% */
 }
 
 .map-button:hover {
-  transform: scale(1.088) translateY(-5.5px); /* +10% */
-  box-shadow: 0 8.8px 22px rgba(0, 0, 0, 0.3),
-    0 0 16.5px rgba(245, 166, 35, 0.5); /* +10% */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 166, 35, 0.6);
   background-color: #f8b94a;
 }
 
@@ -686,5 +725,27 @@ body {
   .map-button {
     padding: 13.2px 33px; /* +10% */
     font-size: 17.6px; /* +10% */
+  }
+
+  /* Адаптация размеров кнопок залов для мобильных устройств */
+  .landing-main {
+    grid-template-columns: 250px 1fr 250px; /* Уменьшаем колонки на мобильных */
+  }
+
+  .hall-card {
+    width: 240px; /* Уменьшаем ширину кнопок на мобильных */
+    margin: 15px 0; /* Уменьшаем отступы между кнопками */
+  }
+
+  .hall-image {
+    height: 180px; /* Уменьшаем высоту изображения */
+  }
+
+  .hall-name {
+    font-size: 26px; /* Уменьшаем размер шрифта */
+  }
+
+  .hall-description {
+    font-size: 20px; /* Уменьшаем размер шрифта */
   }
 }
