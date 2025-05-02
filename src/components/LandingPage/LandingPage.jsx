@@ -127,7 +127,7 @@ function LandingPage() {
       </div> */}
 
       <header className="landing-header elevated">
-        <h1>МУЗЕЙ</h1>
+        <h1>МУЗЕЙ ИСТОРИИ</h1>
         <h2>ВОЕННО - КОСМИЧЕСКОЙ АКАДЕМИИ</h2>
         <h2>ИМЕНИ А.Ф. МОЖАЙСКОГО</h2>
       </header>
@@ -221,7 +221,7 @@ function LandingPage() {
       {/* Кнопки контактов внизу справа */}
       <div className="social-contacts">
         <a
-          href="https://vk.com"
+          href="https://vk.com/vka_spb"
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon"
@@ -229,7 +229,7 @@ function LandingPage() {
           <FaVk />
         </a>
         <a
-          href="https://t.me"
+          href="https://t.me/vka_spb"
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon"
@@ -237,7 +237,7 @@ function LandingPage() {
           <FaTelegram />
         </a>
         <a
-          href="https://youtube.com"
+          href="https://www.youtube.com/@vka_spb"
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon"

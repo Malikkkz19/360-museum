@@ -10,14 +10,59 @@ const VirtualTour = () => {
   const { hallId } = useParams();
   const navigate = useNavigate();
   const [currentScene, setCurrentScene] = useState("");
+  
+  // Состояния для подсказки о линейке залов
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipFading, setTooltipFading] = useState(false);
 
+  // Состояние для панели описания зала
+  const [isRoomDescriptionOpen, setIsRoomDescriptionOpen] = useState(false);
+  const [roomDescription, setRoomDescription] = useState({
+    title: "Космический зал",
+    description:
+      "Этот зал посвящен истории космонавтики и исследованию космического пространства. Здесь представлены модели космических кораблей, скафандры, фотографии космонавтов и другие экспонаты, связанные с освоением космоса.",
+    images: [
+      "/images/Image1.jpg",
+      "/images/Image2.jpg",
+      "/images/room3.jpg",
+      "/images/room4.jpg",
+      "/images/canada.jpg",
+      "/images/room3.jpg",
+    ],
+  });
+
+  // Состояние для выпадающего меню слева
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
+  // Эффект для показа подсказки о линейке залов
+  useEffect(() => {
+    // Показываем подсказку через 2 секунды после загрузки
+    const showTimeout = setTimeout(() => {
+      setShowTooltip(true);
+    }, 2000);
+    
+    // Начинаем скрывать подсказку через 8 секунд
+    const hideTimeout = setTimeout(() => {
+      setTooltipFading(true);
+      
+      // Полностью скрываем через 1 секунду после начала анимации исчезновения
+      setTimeout(() => {
+        setShowTooltip(false);
+        setTooltipFading(false);
+      }, 1000);
+    }, 8000);
+    
+    // Очищаем таймеры при размонтировании компонента
+    return () => {
+      clearTimeout(showTimeout);
+      clearTimeout(hideTimeout);
+    };
+  }, []);
+
+  // Эффект для инициализации виртуального тура
   useEffect(() => {
     console.log("Загрузка тура для зала:", hallId);
-    // Здесь логика загрузки и инициализации 360-тура
-    // на основе hallId
-    // Например, выбор нужной панорамы из списка или конфигурации
-    // pannellum.viewer('panorama', { /* ...config based on hallId */ });
-
+    
     // Данные о сценах (панорамах)
     const scenes = [
       {
@@ -402,22 +447,6 @@ const VirtualTour = () => {
     };
   }, [hallId]);
 
-  // Состояние для панели описания зала
-  const [isRoomDescriptionOpen, setIsRoomDescriptionOpen] = useState(false);
-  const [roomDescription, setRoomDescription] = useState({
-    title: "Космический зал",
-    description:
-      "Этот зал посвящен истории космонавтики и исследованию космического пространства. Здесь представлены модели космических кораблей, скафандры, фотографии космонавтов и другие экспонаты, связанные с освоением космоса.",
-    images: [
-      "/images/Image1.jpg",
-      "/images/Image2.jpg",
-      "/images/room3.jpg",
-      "/images/room4.jpg",
-      "/images/canada.jpg",
-      "/images/room3.jpg",
-    ],
-  });
-
   // Функция для открытия/закрытия панели описания зала
   const toggleRoomDescription = () => {
     setIsRoomDescriptionOpen(!isRoomDescriptionOpen);
@@ -436,43 +465,16 @@ const VirtualTour = () => {
     navigate("/map");
   };
 
-  // Данные о залах музея для линейки залов внизу страницы
-  const museumHalls = [
-    {
-      id: "hall1",
-      name: "Космический зал",
-      description: "История космонавтики",
-      image: "/images/1.png",
-    },
-    {
-      id: "hall2",
-      name: "Зал ракетостроения",
-      description: "Развитие ракетной техники",
-      image: "/images/2.png",
-    },
-    {
-      id: "hall3",
-      name: "Зал спутников",
-      description: "Искусственные спутники Земли",
-      image: "/images/3.png",
-    },
-    {
-      id: "hall4",
-      name: "Зал космонавтов",
-      description: "Герои космоса",
-      image: "/images/4.png",
-    },
-    {
-      id: "hall5",
-      name: "Зал будущего",
-      description: "Перспективы космонавтики",
-      image: "/images/5.png",
-    },
-  ];
+  // Функция для открытия/закрытия выпадающего меню
+  const toggleSideMenu = () => {
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
 
-  // Функция для перехода в другой зал
-  const navigateToHall = (hallId) => {
-    navigate(`/virtual-tour/${hallId}`);
+  // Функция для обратной связи
+  const handleFeedbackClick = () => {
+    // Здесь можно добавить логику для формы обратной связи
+    // Например, открытие модального окна или переход на страницу с формой
+    alert("Функция обратной связи будет добавлена позже");
   };
 
   return (
@@ -488,76 +490,81 @@ const VirtualTour = () => {
         <img src={yellowRocket} alt="Ракета" />
       </div>
 
-      {/* Кнопка назад */}
-      <button className="nav-button tour-back-button" onClick={handleBackClick}>
-        <span className="back-arrow">←</span>
-        <span className="button-text">назад</span>
+      {/* Кнопка для открытия выпадающего меню */}
+      <button className="side-menu-toggle" onClick={toggleSideMenu}>
+        <span className="menu-icon">
+          <span></span>
+        </span>
       </button>
 
-      {/* Навигационная панель */}
-      <div className="tour-navigation-panel">
-        <button className="nav-button home-button" onClick={handleHomeClick}>
-          <span className="button-text">главный экран</span>
+      {/* Выпадающее меню слева */}
+      <div className={`side-menu ${isSideMenuOpen ? "open" : ""}`}>
+        <button className="side-menu-close" onClick={toggleSideMenu}>
+          <span className="close-icon"></span>
         </button>
 
-        <button className="nav-button map-button" onClick={handleMapClick}>
-          <span className="button-text">карта музея</span>
-        </button>
+        <div className="side-menu-content">
+          <h3 className="side-menu-title">Навигация</h3>
 
-        <button
-          className="nav-button room-description-button"
-          onClick={toggleRoomDescription}
-        >
-          <span className="button-text">описание зала</span>
-        </button>
-      </div>
-
-      {/* Схема помещения (вынесена из навигационной панели) */}
-      <div className="room-map-container">
-        <div className="room-map">
-          {/* Схема помещения */}
-          <div className="room-map-outline">
-            {/* Точки на карте */}
-            <div className="map-dot map-dot-1"></div>
-            <div className="map-dot map-dot-2"></div>
-            <div className="map-dot map-dot-3"></div>
-            <div className="map-dot map-dot-4"></div>
-            <div className="map-dot map-dot-5"></div>
-            <div className="map-dot map-dot-6"></div>
-            <div className="map-dot map-dot-7 active"></div>
-            <div className="map-dot map-dot-8"></div>
-
-            {/* Прямоугольники стендов */}
-            <div className="map-stand map-stand-1"></div>
-            <div className="map-stand map-stand-2"></div>
-            <div className="map-stand map-stand-3"></div>
-            <div className="map-stand map-stand-4"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Линейка с залами внизу страницы */}
-      <div className="halls-bar-container">
-        <div className="tour-halls-lineup">
-          {museumHalls.map((hall) => (
-            <div
-              key={hall.id}
-              className={`tour-hall-card ${hall.id === hallId ? "active" : ""}`}
-              onClick={() => navigateToHall(hall.id)}
+          <div className="side-menu-buttons">
+            <button
+              className="nav-button back-button"
+              onClick={handleBackClick}
             >
-              <div className="tour-hall-image-container">
-                <img
-                  src={hall.image}
-                  alt={hall.name}
-                  className="tour-hall-image"
-                />
-              </div>
-              <div className="tour-hall-info">
-                <h3 className="tour-hall-name">{hall.name}</h3>
-                <p className="tour-hall-description">{hall.description}</p>
+              <span className="back-arrow">←</span>
+              <span className="button-text">Назад</span>
+            </button>
+
+            <button
+              className="nav-button home-button"
+              onClick={handleHomeClick}
+            >
+              <span className="button-text">Главный экран</span>
+            </button>
+
+            <button className="nav-button map-button" onClick={handleMapClick}>
+              <span className="button-text">Карта музея</span>
+            </button>
+
+            <button
+              className="nav-button room-description-button"
+              onClick={toggleRoomDescription}
+            >
+              <span className="button-text">Описание зала</span>
+            </button>
+
+            <button
+              className="nav-button feedback-button"
+              onClick={handleFeedbackClick}
+            >
+              <span className="button-text">Обратная связь</span>
+            </button>
+          </div>
+
+          {/* Схема помещения (перенесена в выпадающее меню) */}
+          <div className="side-menu-map">
+            <h4 className="side-menu-map-title">Схема зала</h4>
+            <div className="room-map">
+              {/* Схема помещения */}
+              <div className="room-map-outline">
+                {/* Точки на карте */}
+                <div className="map-dot map-dot-1"></div>
+                <div className="map-dot map-dot-2"></div>
+                <div className="map-dot map-dot-3"></div>
+                <div className="map-dot map-dot-4"></div>
+                <div className="map-dot map-dot-5"></div>
+                <div className="map-dot map-dot-6"></div>
+                <div className="map-dot map-dot-7 active"></div>
+                <div className="map-dot map-dot-8"></div>
+
+                {/* Прямоугольники стендов */}
+                <div className="map-stand map-stand-1"></div>
+                <div className="map-stand map-stand-2"></div>
+                <div className="map-stand map-stand-3"></div>
+                <div className="map-stand map-stand-4"></div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
@@ -594,6 +601,75 @@ const VirtualTour = () => {
           </div>
         </div>
       </div>
+
+      {/* Триггер для линейки с залами */}
+      <div className="tour-halls-trigger"></div>
+
+      {/* Линейка с залами внизу страницы */}
+      <div className="tour-halls-bar-container">
+        <div className="tour-halls-bar">
+          {[
+            {
+              id: "room1",
+              name: "ЗАЛ 1",
+              description: "История академии",
+              image: "/images/1.png",
+            },
+            {
+              id: "room2",
+              name: "ЗАЛ 2",
+              description: "Становление ВКА",
+              image: "/images/2.png",
+            },
+            {
+              id: "room3",
+              name: "ЗАЛ 3",
+              description: "1941-1957 гг.",
+              image: "/images/3.png",
+            },
+            {
+              id: "room4",
+              name: "ЗАЛ 4",
+              description: "Космический зал",
+              image: "/images/4.png",
+            },
+            {
+              id: "room5",
+              name: "ЗАЛ 5",
+              description: "Зал славы",
+              image: "/images/5.png",
+            },
+            {
+              id: "room6",
+              name: "ЗАЛ 6",
+              description: "Учебный зал",
+              image: "/images/6.png",
+            },
+          ].map((hall) => (
+            <div
+              key={hall.id}
+              className={`tour-hall-card ${hall.id === hallId ? "active" : ""}`}
+              onClick={() => navigate(`/tour/${hall.id}`)}
+            >
+              <div className="tour-hall-image-container">
+                <img src={hall.image} alt={hall.name} className="tour-hall-image" />
+              </div>
+              <div className="tour-hall-info">
+                <p className="tour-hall-name">{hall.name}</p>
+                <p className="tour-hall-description">{hall.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Подсказка о линейке залов */}
+      {showTooltip && (
+        <div className={`halls-tooltip ${tooltipFading ? 'fadeout' : 'active'}`}>
+          <span className="halls-tooltip-text">Наведите курсор сюда для выбора зала</span>
+          <span className="halls-tooltip-icon">↓</span>
+        </div>
+      )}
     </div>
   );
 };
