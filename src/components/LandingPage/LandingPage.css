@@ -556,8 +556,8 @@ body {
 /* Ракеты и планета на фоне (уменьшенные) */
 .white-rocket {
   position: absolute;
-  top: -3%;
-  left: 6%;
+  top: -2%;
+  left: 5%;
   z-index: 0;
   opacity: 0.9;
   max-width: 22%; /* +10% */
@@ -568,7 +568,7 @@ body {
 
 .planet {
   position: absolute;
-  top: -3%;
+  top: -2%;
   right: 5%;
   z-index: 0;
   opacity: 0.9;
@@ -579,8 +579,12 @@ body {
 }
 
 /* Уменьшенные иконки */
-.small-icon {
-  max-width: 15% !important;
+.small-icon-rocket {
+  max-width: 14% !important;
+}
+
+.small-icon-planet {
+  max-width: 16% !important;
 }
 
 .white-rocket img,

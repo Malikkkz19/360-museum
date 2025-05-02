@@ -112,12 +112,12 @@ function LandingPage() {
       </div>
 
       {/* Ракеты и планета на фоне (уменьшенные) */}
-      <div className="white-rocket small-icon">
+      <div className="white-rocket small-icon-rocket">
         <img src={whiteRocket} alt="Белая ракета" />
       </div>
 
       {/* Планета в правом верхнем углу (уменьшенная) */}
-      <div className="planet small-icon">
+      <div className="planet small-icon-planet">
         <img src={planet} alt="Планета" />
       </div>
 
