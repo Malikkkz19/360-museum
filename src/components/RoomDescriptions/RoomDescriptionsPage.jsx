@@ -120,7 +120,7 @@ function RoomDescriptionsPage() {
         {/* Заголовок */}
         <div className="room-descriptions-header">
           <div className="room-descriptions-title-container">
-            <h1 className="room-descriptions-title">ОПИСАНИЕ ЗАЛОВ</h1>
+            <h1 className="room-descriptions-title">ОПИСАНИЯ ЗАЛОВ</h1>
             <h2 className="room-descriptions-subtitle">МУЗЕЯ ВОЕННО-КОСМИЧЕСКОЙ АКАДЕМИИ</h2>
           </div>
         </div>

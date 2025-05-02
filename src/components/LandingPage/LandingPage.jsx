@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { FaVk, FaTelegram, FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaVk, FaTelegram, FaYoutube, FaInstagram, FaTimes } from "react-icons/fa";
 
 // Импортируем изображения залов
 import hall1 from "../../assets/halls/1.png";
@@ -63,6 +63,19 @@ const halls = [
 
 function LandingPage() {
   const navigate = useNavigate();
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  // Проверка первого посещения и отображения приветственного окна
+  useEffect(() => {
+    const hasVisitedBefore = localStorage.getItem('hasVisitedMuseum');
+    if (!hasVisitedBefore) {
+      // Добавляем небольшую задержку, чтобы страница успела загрузиться
+      setTimeout(() => {
+        setShowWelcomeModal(true);
+        localStorage.setItem('hasVisitedMuseum', 'true');
+      }, 500);
+    }
+  }, []);
 
   const handleHallClick = (hallId) => {
     // При клике переходим в нужный зал
@@ -78,6 +91,17 @@ function LandingPage() {
   const handleRoomDescriptionsClick = () => {
     // Действие для кнопки "ОПИСАНИЕ ЗАЛОВ"
     navigate("/room-descriptions");
+  };
+  
+  // Добавляем функцию закрытия модального окна
+  const closeWelcomeModal = () => {
+    setShowWelcomeModal(false);
+  };
+
+  // Функция для отладки - сбросить локальное хранилище
+  const resetWelcomeModal = () => {
+    localStorage.removeItem('hasVisitedMuseum');
+    window.location.reload();
   };
 
   return (
@@ -254,10 +278,82 @@ function LandingPage() {
         </a>
       </div>
 
-      {/* Временно скрываем логотипы */}
-      {/* <div className="logo-right">
-        <img src={logoRight} alt="Лого" />
-      </div> */}
+      {/* Временная кнопка для тестирования приветствия */}
+      <button 
+        onClick={resetWelcomeModal}
+        style={{
+          position: 'fixed', 
+          bottom: '10px', 
+          left: '10px', 
+          zIndex: 999, 
+          background: '#2a3f5f',
+          color: '#fff',
+          border: '1px solid #f5a623',
+          padding: '5px 10px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontSize: '12px'
+        }}
+      >
+        Сбросить приветствие
+      </button>
+
+      {/* Приветственное модальное окно */}
+      {showWelcomeModal && (
+        <div className="welcome-modal-overlay" onClick={closeWelcomeModal}>
+          <div className="welcome-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="welcome-modal-close" onClick={closeWelcomeModal}>
+              <FaTimes />
+            </button>
+            
+            <div className="welcome-modal-content">
+              <div className="welcome-modal-header">
+                <div className="welcome-modal-title-container">
+                  <h2 className="welcome-modal-title">Добро пожаловать</h2>
+                  <div className="welcome-modal-subtitle">в виртуальный музей истории</div>
+                </div>
+                
+                <div className="welcome-modal-academy-title">
+                  Военно-космической академии
+                  <br />имени А.Ф. Можайского
+                </div>
+              </div>
+              
+              <div className="welcome-modal-divider">
+                <div className="welcome-modal-rocket">
+                  <img src={yellowRocket} alt="Ракета" />
+                </div>
+              </div>
+              
+              <div className="welcome-modal-text">
+                <p>
+                  Приветствуем вас в виртуальном пространстве музея истории Военно-космической академии имени А.Ф. Можайского – 
+                  старейшего военно-учебного заведения России, основанного в 1712 году.
+                </p>
+                <p>
+                  Здесь вы можете совершить увлекательное путешествие по залам музея, 
+                  познакомиться с уникальными экспонатами и узнать об истории становления и развития 
+                  отечественной космонавтики и ракетостроения.
+                </p>
+                <p>
+                  Выберите интересующий вас зал на главной странице или воспользуйтесь 
+                  картой музея для навигации по виртуальному пространству.
+                </p>
+              </div>
+              
+              <button className="welcome-modal-button" onClick={closeWelcomeModal}>
+                Начать виртуальное путешествие
+              </button>
+            </div>
+            
+            <div className="welcome-modal-stars">
+              {[...Array(15)].map((_, index) => (
+                <div key={index} className={`modal-star-dot modal-star-${index + 1}`}></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
