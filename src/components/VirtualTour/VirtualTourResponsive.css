@@ -1,14 +1,9 @@
-/* Адаптивные стили для VirtualTour */
-
-/* Мобильные устройства */
 @media (max-width: 768px) {
-  /* Увеличиваем размер хотспота для удобства нажатия на мобильных устройствах */
   .info-hotspot {
     width: 44px;
     height: 44px;
   }
 
-  /* Модальное окно на весь экран на мобильных устройствах */
   .info-tooltip {
     width: 100%;
     max-width: 100%;
@@ -21,36 +16,30 @@
     padding: 15px;
   }
 
-  /* Уменьшаем размер заголовка */
   .info-tooltip-header {
     font-size: 20px;
     margin-bottom: 10px;
   }
 
-  /* Адаптируем галерею для мобильных устройств */
   .info-tooltip-gallery {
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
   }
 
-  /* Уменьшаем высоту изображений в галерее */
   .gallery-image {
     height: 80px;
   }
 
-  /* Уменьшаем высоту видео */
   .info-tooltip-video iframe {
     height: 180px;
   }
 
-  /* Увеличиваем размер кнопки закрытия для удобства нажатия */
   .info-tooltip-close {
     width: 44px;
     height: 44px;
     font-size: 28px;
   }
 
-  /* Адаптируем навигационную панель */
   .tour-navigation-panel {
     flex-direction: column;
     gap: 10px;
@@ -68,7 +57,6 @@
   }
 }
 
-/* Планшеты */
 @media (min-width: 769px) and (max-width: 1024px) {
   .info-tooltip {
     width: 90%;

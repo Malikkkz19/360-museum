@@ -10,12 +10,10 @@ const VirtualTour = () => {
   const { hallId } = useParams();
   const navigate = useNavigate();
   const [currentScene, setCurrentScene] = useState("");
-  
-  // Состояния для подсказки о линейке залов
+
   const [showTooltip, setShowTooltip] = useState(false);
   const [tooltipFading, setTooltipFading] = useState(false);
 
-  // Состояние для панели описания зала
   const [isRoomDescriptionOpen, setIsRoomDescriptionOpen] = useState(false);
   const [roomDescription, setRoomDescription] = useState({
     title: "Космический зал",
@@ -31,39 +29,31 @@ const VirtualTour = () => {
     ],
   });
 
-  // Состояние для выпадающего меню слева
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
-  // Эффект для показа подсказки о линейке залов
   useEffect(() => {
-    // Показываем подсказку через 2 секунды после загрузки
     const showTimeout = setTimeout(() => {
       setShowTooltip(true);
     }, 2000);
-    
-    // Начинаем скрывать подсказку через 8 секунд
+
     const hideTimeout = setTimeout(() => {
       setTooltipFading(true);
-      
-      // Полностью скрываем через 1 секунду после начала анимации исчезновения
+
       setTimeout(() => {
         setShowTooltip(false);
         setTooltipFading(false);
       }, 1000);
     }, 8000);
-    
-    // Очищаем таймеры при размонтировании компонента
+
     return () => {
       clearTimeout(showTimeout);
       clearTimeout(hideTimeout);
     };
   }, []);
 
-  // Эффект для инициализации виртуального тура
   useEffect(() => {
     console.log("Загрузка тура для зала:", hallId);
-    
-    // Данные о сценах (панорамах)
+
     const scenes = [
       {
         id: "room1",
@@ -112,7 +102,6 @@ const VirtualTour = () => {
             imageUrl: "/images/canada.jpg",
           },
         ],
-        // Новая точка с видео
         videoHotspots: [
           {
             yaw: 1.2,
@@ -180,7 +169,6 @@ const VirtualTour = () => {
       },
     };
 
-    // Инициализация Marzipano
     const viewer = new Marzipano.Viewer(panoRef.current, viewerOpts);
     const sceneMap = {};
 
@@ -205,7 +193,6 @@ const VirtualTour = () => {
 
       sceneMap[sceneData.id] = { scene, view, data: sceneData };
 
-      // Ссылочные точки (linkHotspots)
       sceneData.linkHotspots.forEach((hotspot) => {
         const element = document.createElement("div");
         element.className = "hotspot-link";
@@ -221,27 +208,22 @@ const VirtualTour = () => {
           .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
       });
 
-      // Информационные точки (infoHotspots)
       if (sceneData.infoHotspots) {
         sceneData.infoHotspots.forEach((hotspot) => {
           const element = document.createElement("div");
           element.className = "info-hotspot";
 
-          // Создаем затемненный фон для модального окна
           const backdrop = document.createElement("div");
           backdrop.className = "info-tooltip-backdrop";
 
-          // Создаем модальное окно с информацией
           const tooltip = document.createElement("div");
           tooltip.className = "info-tooltip";
 
-          // Заголовок модального окна
           const header = document.createElement("h3");
           header.className = "info-tooltip-header";
           header.textContent = hotspot.title || "Информация";
           tooltip.appendChild(header);
 
-          // Кнопка закрытия
           const closeButton = document.createElement("button");
           closeButton.className = "info-tooltip-close";
           closeButton.innerHTML = "&times;";
@@ -251,7 +233,6 @@ const VirtualTour = () => {
           });
           tooltip.appendChild(closeButton);
 
-          // Текстовое описание
           if (hotspot.info) {
             const content = document.createElement("div");
             content.className = "info-tooltip-content";
@@ -259,7 +240,6 @@ const VirtualTour = () => {
             tooltip.appendChild(content);
           }
 
-          // Мини-галерея (если есть)
           if (hotspot.gallery && hotspot.gallery.length > 0) {
             const gallery = document.createElement("div");
             gallery.className = "info-tooltip-gallery";
@@ -270,7 +250,6 @@ const VirtualTour = () => {
               img.src = imgSrc;
               img.alt = "Галерея";
 
-              // Открытие изображения в большем размере при клике
               img.addEventListener("click", () => {
                 const lightbox = document.createElement("div");
                 lightbox.style.position = "fixed";
@@ -304,17 +283,14 @@ const VirtualTour = () => {
             tooltip.appendChild(gallery);
           }
 
-          // Видео (если есть)
           if (hotspot.video) {
             const videoContainer = document.createElement("div");
             videoContainer.className = "info-tooltip-video";
 
-            // Поддержка YouTube, Vimeo или HTML5 видео
             if (
               hotspot.video.includes("youtube.com") ||
               hotspot.video.includes("youtu.be")
             ) {
-              // YouTube iframe
               const iframe = document.createElement("iframe");
               iframe.src = hotspot.video.replace("watch?v=", "embed/");
               iframe.allow =
@@ -322,7 +298,6 @@ const VirtualTour = () => {
               iframe.allowFullscreen = true;
               videoContainer.appendChild(iframe);
             } else if (hotspot.video.includes("vimeo.com")) {
-              // Vimeo iframe
               const iframe = document.createElement("iframe");
               iframe.src = hotspot.video.replace(
                 "vimeo.com",
@@ -332,7 +307,6 @@ const VirtualTour = () => {
               iframe.allowFullscreen = true;
               videoContainer.appendChild(iframe);
             } else {
-              // HTML5 видео
               const video = document.createElement("video");
               video.src = hotspot.video;
               video.controls = true;
@@ -344,11 +318,9 @@ const VirtualTour = () => {
             tooltip.appendChild(videoContainer);
           }
 
-          // Добавляем модальное окно и фон в DOM
           document.body.appendChild(backdrop);
           document.body.appendChild(tooltip);
 
-          // Обработчик клика по хотспоту
           element.addEventListener("click", () => {
             tooltip.classList.add("active");
             backdrop.classList.add("active");
@@ -360,7 +332,6 @@ const VirtualTour = () => {
         });
       }
 
-      // Точки с изображением (imageHotspots)
       if (sceneData.imageHotspots) {
         sceneData.imageHotspots.forEach((hotspot) => {
           const element = document.createElement("div");
@@ -371,14 +342,12 @@ const VirtualTour = () => {
           img.src = hotspot.imageUrl;
           tooltip.appendChild(img);
           element.appendChild(tooltip);
-          // Можно добавить обработчик клика для открытия модального окна, если нужно
           scene
             .hotspotContainer()
             .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
         });
       }
 
-      // Точки с видео (videoHotspots)
       if (sceneData.videoHotspots) {
         sceneData.videoHotspots.forEach((hotspot) => {
           const element = document.createElement("div");
@@ -386,19 +355,16 @@ const VirtualTour = () => {
 
           const tooltip = document.createElement("div");
           tooltip.className = "video-tooltip";
-          // Создаём элемент видео с настройками автозапуска (видео должно быть muted для автоплей)
           const video = document.createElement("video");
           video.src = hotspot.videoUrl;
           video.setAttribute("muted", true);
           video.setAttribute("loop", true);
           video.setAttribute("playsinline", true);
           video.autoplay = true;
-          // Отключаем звук (можно убрать, если хотите звук)
           video.muted = true;
           tooltip.appendChild(video);
           element.appendChild(tooltip);
 
-          // Всплывающее окно с видео появляется при наведении на точку
           scene
             .hotspotContainer()
             .createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
@@ -447,12 +413,10 @@ const VirtualTour = () => {
     };
   }, [hallId]);
 
-  // Функция для открытия/закрытия панели описания зала
   const toggleRoomDescription = () => {
     setIsRoomDescriptionOpen(!isRoomDescriptionOpen);
   };
 
-  // Функции для кнопок навигации
   const handleBackClick = () => {
     window.history.back();
   };
@@ -465,15 +429,12 @@ const VirtualTour = () => {
     navigate("/map");
   };
 
-  // Функция для открытия/закрытия выпадающего меню
   const toggleSideMenu = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
 
   // Функция для обратной связи
   const handleFeedbackClick = () => {
-    // Здесь можно добавить логику для формы обратной связи
-    // Например, открытие модального окна или переход на страницу с формой
     alert("Функция обратной связи будет добавлена позже");
   };
 
@@ -481,27 +442,22 @@ const VirtualTour = () => {
     <div className="virtual-tour-container">
       <div ref={panoRef} className="pano-container"></div>
 
-      {/* Красивая шапка */}
       <header className="tour-header">
-        {/* Кнопка для открытия выпадающего меню */}
         <button className="side-menu-toggle" onClick={toggleSideMenu}>
           <span className="menu-icon">
             <span></span>
           </span>
         </button>
 
-        {/* Заголовок академии */}
         <div className="academy-title">
           Военно-космическая академия им. А.Ф. Можайского
         </div>
 
-        {/* Логотип академии */}
         <div className="academy-logo">
           <img src={yellowRocket} alt="Ракета" />
         </div>
       </header>
 
-      {/* Выпадающее меню слева */}
       <div className={`side-menu ${isSideMenuOpen ? "open" : ""}`}>
         <button className="side-menu-close" onClick={toggleSideMenu}>
           <span className="close-icon"></span>
@@ -545,13 +501,10 @@ const VirtualTour = () => {
             </button>
           </div>
 
-          {/* Схема помещения (перенесена в выпадающее меню) */}
           <div className="side-menu-map">
             <h4 className="side-menu-map-title">Схема зала</h4>
             <div className="room-map">
-              {/* Схема помещения */}
               <div className="room-map-outline">
-                {/* Точки на карте */}
                 <div className="map-dot map-dot-1"></div>
                 <div className="map-dot map-dot-2"></div>
                 <div className="map-dot map-dot-3"></div>
@@ -561,7 +514,6 @@ const VirtualTour = () => {
                 <div className="map-dot map-dot-7 active"></div>
                 <div className="map-dot map-dot-8"></div>
 
-                {/* Прямоугольники стендов */}
                 <div className="map-stand map-stand-1"></div>
                 <div className="map-stand map-stand-2"></div>
                 <div className="map-stand map-stand-3"></div>
@@ -572,7 +524,6 @@ const VirtualTour = () => {
         </div>
       </div>
 
-      {/* Выезжающая панель с описанием зала */}
       <div
         className={`room-description-panel ${
           isRoomDescriptionOpen ? "open" : ""
@@ -606,10 +557,8 @@ const VirtualTour = () => {
         </div>
       </div>
 
-      {/* Триггер для линейки с залами */}
       <div className="tour-halls-trigger"></div>
 
-      {/* Линейка с залами внизу страницы */}
       <div className="tour-halls-bar-container">
         <div className="tour-halls-bar">
           {[
@@ -656,7 +605,11 @@ const VirtualTour = () => {
               onClick={() => navigate(`/tour/${hall.id}`)}
             >
               <div className="tour-hall-image-container">
-                <img src={hall.image} alt={hall.name} className="tour-hall-image" />
+                <img
+                  src={hall.image}
+                  alt={hall.name}
+                  className="tour-hall-image"
+                />
               </div>
               <div className="tour-hall-info">
                 <p className="tour-hall-name">{hall.name}</p>
@@ -667,10 +620,13 @@ const VirtualTour = () => {
         </div>
       </div>
 
-      {/* Подсказка о линейке залов */}
       {showTooltip && (
-        <div className={`halls-tooltip ${tooltipFading ? 'fadeout' : 'active'}`}>
-          <span className="halls-tooltip-text">Наведите курсор сюда для выбора зала</span>
+        <div
+          className={`halls-tooltip ${tooltipFading ? "fadeout" : "active"}`}
+        >
+          <span className="halls-tooltip-text">
+            Наведите курсор сюда для выбора зала
+          </span>
           <span className="halls-tooltip-icon">↓</span>
         </div>
       )}

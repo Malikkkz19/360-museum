@@ -1,25 +1,24 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './MapPage.css';
-import yellowRocket from '../../assets/halls/yellow_rocket.png';
-import museumScheme from '../../assets/halls/scheme.svg';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./MapPage.css";
+import yellowRocket from "../../assets/halls/yellow_rocket.png";
+import museumScheme from "../../assets/halls/scheme.svg";
 
 function MapPage() {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <div className="map-page">
-      {/* Мерцающие точки-звезды */}
       <div className="twinkling-stars">
         {Array.from({ length: 25 }, (_, i) => (
           <div key={`star-${i}`} className={`star-dot star-dot-${i + 1}`}></div>
         ))}
       </div>
-      
+
       <div className="map-content">
         {/* Заголовок */}
         <div className="map-header">
@@ -31,13 +30,11 @@ function MapPage() {
             <h1>МУЗЕЯ</h1>
           </div>
         </div>
-        
-        {/* Карта музея со схемой */}
+
         <div className="museum-map">
           <img src={museumScheme} alt="Схема музея" className="museum-scheme" />
         </div>
-        
-        {/* Футер */} 
+
         <div className="map-footer">
           <button className="map-back-button" onClick={handleBackClick}>
             <span className="back-arrow">←</span>

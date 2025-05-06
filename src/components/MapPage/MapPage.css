@@ -1,6 +1,6 @@
 .map-page {
   position: relative;
-  background-color: #2a3f5f; /* Темно-синий фон такой же как на LandingPage */
+  background-color: #2a3f5f;
   min-height: 100vh;
   height: 100vh;
   width: 100%;
@@ -12,7 +12,6 @@
   overflow: hidden;
 }
 
-/* Повторно используем стили для звезд из LandingPage */
 .twinkling-stars {
   position: absolute;
   top: 0;
@@ -33,26 +32,29 @@
   animation: twinkle 4s infinite;
 }
 
-/* Генерируем случайные позиции для звезд */
-.star-dot:nth-child(3n+1) { 
-  width: 3px; 
+.star-dot:nth-child(3n + 1) {
+  width: 3px;
   height: 3px;
   box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.5);
 }
-.star-dot:nth-child(3n+2) { 
-  width: 1px; 
+.star-dot:nth-child(3n + 2) {
+  width: 1px;
   height: 1px;
   box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Анимация мерцания */
 @keyframes twinkle {
-  0% { opacity: 0.1; }
-  50% { opacity: 1; }
-  100% { opacity: 0.1; }
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
 }
 
-/* Основное содержимое страницы */
 .map-content {
   position: relative;
   z-index: 1;
@@ -70,7 +72,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px; /* Увеличен отступ снизу */
+  margin-bottom: 30px;
 }
 
 .map-title {
@@ -81,19 +83,19 @@
 }
 
 .map-title h1 {
-  font-size: 80px; /* Увеличен размер шрифта */
+  font-size: 80px;
   margin: 0;
-  color: #e4b85e; /* Золотистый цвет */
+  color: #e4b85e;
   text-transform: uppercase;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(228, 184, 94, 0.5); /* Добавлено свечение */
-  letter-spacing: 3px; /* Увеличен межбуквенный интервал */
+  text-shadow: 0 0 10px rgba(228, 184, 94, 0.5);
+  letter-spacing: 3px;
 }
 
 .map-logo {
-  width: 160px; /* Увеличен размер */
-  height: 160px; /* Увеличен размер */
-  margin: 0 30px; /* Увеличены отступы */
+  width: 160px;
+  height: 160px;
+  margin: 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,74 +104,65 @@
 .map-logo img {
   max-width: 100%;
   max-height: 100%;
-  transform: rotate(-15deg); /* Небольшой наклон ракеты */
-  filter: drop-shadow(0 0 10px rgba(228, 184, 94, 0.7)); /* Золотистое свечение */
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 0 10px rgba(228, 184, 94, 0.7));
 }
 
 .corridor-title {
   font-size: 32px;
   margin: 0;
-  color: #e4b85e; /* Золотистый цвет */
+  color: #e4b85e;
   text-transform: uppercase;
   font-weight: normal;
 }
 
-/* Карта музея */
 .museum-map {
   position: relative;
-  width: 230%; /* Увеличил ширину на 50% */
-  max-width: 3000px; /* Увеличил максимальную ширину на 50% */
-  height: 120vh; /* Увеличил высоту на 50% */
+  width: 230%;
+  max-width: 3000px;
+  height: 120vh;
   overflow: hidden;
-  margin: -26vh -20vh 0; /* Поднял схему выше на 30% (24vh от 80vh) */
+  margin: -26vh -20vh 0;
   display: flex;
-  justify-content: flex-end; /* Изменено с center на flex-end для сдвига влево */
+  justify-content: flex-end;
   align-items: center;
-  margin-left: -15%; /* Добавлен отрицательный отступ слева для сдвига на 5% */
+  margin-left: -15%;
 }
 
-/* Стили для SVG-схемы музея */
 .museum-scheme {
-  max-width: 230%; /* Увеличил максимальную ширину на 50% */
-  max-height: 230%; /* Увеличил максимальную высоту на 50% */
+  max-width: 230%;
+  max-height: 230%;
   object-fit: contain;
-  margin: auto; /* Дополнительное центрирование */
+  margin: auto;
 }
 
-/* Сетка для расположения залов */
 .map-halls {
-  position: absolute; /* Используем absolute позиционирование для элементов */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* padding: 10px; */ /* Убрали внутренний отступ, если мешает */
   box-sizing: border-box;
 }
 
-/* Общий стиль для залов */
 .hall {
   position: absolute;
   background-color: white;
-  border: 2px solid #e4b85e; /* Золотистые границы залов */
+  border: 2px solid #e4b85e;
   box-sizing: border-box;
   cursor: pointer;
 }
 
-/* Общий стиль для надписей залов */
 .hall-label {
   position: absolute;
   color: #2a3f5f;
   font-weight: bold;
-  font-size: 22px; /* Немного уменьшил шрифт */
+  font-size: 22px;
   text-align: center;
   z-index: 10;
   user-select: none;
 }
 
-/* --- Точное позиционирование залов --- */
-
-/* Зал 1 */
 .hall-1 {
   top: 10%;
   left: 69%;
@@ -182,7 +175,6 @@
   transform: translateX(-50%);
 }
 
-/* Зал 2 */
 .hall-2 {
   top: 35%;
   left: 59%;
@@ -195,7 +187,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* Зал 3 */
 .hall-3 {
   top: 65%;
   left: 49%;
@@ -208,7 +199,6 @@
   transform: translateX(-50%);
 }
 
-/* Зал 4 */
 .hall-4 {
   top: 65%;
   left: 27%;
@@ -221,7 +211,6 @@
   transform: translateX(-50%);
 }
 
-/* Зал 5 */
 .hall-5 {
   top: 15%;
   left: 17%;
@@ -234,7 +223,6 @@
   transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-/* Зал 6 */
 .hall-6 {
   top: 10%;
   left: 2%;
@@ -247,14 +235,12 @@
   transform: translateX(-50%);
 }
 
-/* --- Стенды с экспонатами --- */
 .exhibit {
   position: absolute;
   background-color: #e4b85e;
   z-index: 1;
 }
 
-/* --- Интерактивные экраны --- */
 .screen {
   position: absolute;
   background-color: white;
@@ -262,56 +248,56 @@
   z-index: 1;
 }
 
-/* --- Точки для перемещения --- */
 .nav-dot {
   position: absolute;
-  width: 10px; /* Уменьшил размер */
-  height: 10px; /* Уменьшил размер */
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #2a3f5f;
   z-index: 2;
 }
 
-/* --- Вход --- */
 .entrance-label {
   position: absolute;
-  right: -15px; /* Скорректировал позицию */
+  right: -15px;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
-  color: #e4b85e; /* Золотистый цвет */
+  color: #e4b85e;
   font-size: 16px;
   white-space: nowrap;
   z-index: 10;
   transform-origin: center;
 }
 
-/* --- Нижняя часть (кнопка, легенда) --- */
 .map-footer {
   display: flex;
   flex-direction: column;
-  width: 85%; /* Ширина как у карты */
+  width: 85%;
   max-width: 1400px;
   margin-top: 15px;
   position: relative;
-  height: 120px; /* Фиксированная высота для позиционирования */
+  height: 120px;
 }
 
-/* Кнопка назад на странице карты - более эффектная */
 .map-back-button {
   display: flex;
   align-items: center;
-  background: linear-gradient(45deg, rgba(46, 70, 105, 0.8), rgba(72, 104, 153, 0.8)); /* Градиент фона */
-  border: 2px solid #e4b85e; /* Золотистая граница */
-  border-radius: 50px; /* Более округлая форма */
+  background: linear-gradient(
+    45deg,
+    rgba(46, 70, 105, 0.8),
+    rgba(72, 104, 153, 0.8)
+  );
+  border: 2px solid #e4b85e;
+  border-radius: 50px;
   color: white;
-  padding: 15px 30px; /* Увеличены отступы */
-  font-size: 22px; /* Увеличен размер шрифта */
-  font-weight: bold; /* Жирный шрифт */
+  padding: 15px 30px;
+  font-size: 22px;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 0 15px rgba(228, 184, 94, 0.4); /* Добавлено свечение */
-  text-transform: uppercase; /* Заглавные буквы */
-  letter-spacing: 1px; /* Межбуквенный интервал */
+  box-shadow: 0 0 15px rgba(228, 184, 94, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
   position: absolute;
   left: -230px;
   bottom: 15px;
@@ -319,26 +305,33 @@
 }
 
 .map-back-button:hover {
-  background: linear-gradient(45deg, rgba(72, 104, 153, 0.8), rgba(46, 70, 105, 0.8)); /* Инвертированный градиент при наведении */
-  box-shadow: 0 0 20px rgba(228, 184, 94, 0.6); /* Усиленное свечение при наведении */
-  transform: translateY(-2px); /* Эффект поднятия при наведении */
+  background: linear-gradient(
+    45deg,
+    rgba(72, 104, 153, 0.8),
+    rgba(46, 70, 105, 0.8)
+  );
+  box-shadow: 0 0 20px rgba(228, 184, 94, 0.6);
+  transform: translateY(-2px);
 }
 
 .back-arrow {
   margin-right: 10px;
-  font-size: 24px; /* Увеличен размер стрелки */
+  font-size: 24px;
 }
 
-/* Легенда карты - более красивая */
 .map-legend {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, rgba(46, 70, 105, 0.9), rgba(72, 104, 153, 0.9)); /* Градиент фона */
+  background: linear-gradient(
+    to right,
+    rgba(46, 70, 105, 0.9),
+    rgba(72, 104, 153, 0.9)
+  );
   border-radius: 15px;
   padding: 20px 30px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Усиленная тень для объема */
-  border: 2px solid rgba(228, 184, 94, 0.6); /* Более заметная золотистая граница */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(228, 184, 94, 0.6);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -353,52 +346,51 @@
 }
 
 .legend-dot {
-  width: 18px; /* Увеличен размер */
-  height: 18px; /* Увеличен размер */
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background-color: #2a3f5f;
   margin-right: 12px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Усилено свечение */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .legend-selected-dot {
-  width: 18px; /* Увеличен размер */
-  height: 18px; /* Увеличен размер */
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background-color: white;
   border: 2px solid #2a3f5f;
   margin-right: 12px;
   box-sizing: border-box;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Усилено свечение */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .legend-exhibit {
-  width: 28px; /* Увеличен размер */
-  height: 14px; /* Увеличен размер */
+  width: 28px;
+  height: 14px;
   background-color: #e4b85e;
   margin-right: 12px;
-  box-shadow: 0 0 8px rgba(228, 184, 94, 0.8); /* Усилено свечение */
+  box-shadow: 0 0 8px rgba(228, 184, 94, 0.8);
 }
 
 .legend-screen {
-  width: 24px; /* Увеличен размер */
-  height: 18px; /* Увеличен размер */
+  width: 24px;
+  height: 18px;
   background-color: white;
   border: 1px solid #2a3f5f;
   margin-right: 12px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Усилено свечение */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .legend-text {
-  font-size: 20px; /* Увеличен размер шрифта */
+  font-size: 20px;
   white-space: nowrap;
-  color: #e4b85e; /* Золотистый цвет текста */
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6); /* Усилена тень для лучшей читаемости */
-  font-weight: 600; /* Более жирный шрифт */
-  letter-spacing: 0.8px; /* Увеличен межбуквенный интервал */
+  color: #e4b85e;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+  letter-spacing: 0.8px;
 }
 
-/* --- Адаптивность --- */
 @media (max-width: 1200px) {
   .map-title h1 {
     font-size: 36px;
@@ -417,7 +409,7 @@
     height: 60vh;
   }
   .map-footer {
-    height: 160px; /* Увеличена высота для размещения элементов */
+    height: 160px;
   }
   .map-back-button {
     padding: 12px 25px;
@@ -436,41 +428,30 @@
 
 @media (max-width: 768px) {
   .map-title h1 {
-    font-size: 32px; /* Увеличен размер */
+    font-size: 32px;
   }
   .map-logo {
-    width: 90px; /* Увеличен размер */
-    height: 90px; /* Увеличен размер */
+    width: 90px;
+    height: 90px;
   }
   .corridor-title {
-    font-size: 24px; /* Увеличен размер */
+    font-size: 24px;
   }
   .hall-label {
-    font-size: 18px; /* Увеличен размер */
-  }
-  .nav-dot {
-     width: 10px; /* Увеличен размер */
-     height: 10px; /* Увеличен размер */
-  }
-  .map-footer {
-    height: 180px; /* Увеличена высота для размещения элементов *  }
-  .map-back-button {
-    padding: 10px 20px;
     font-size: 18px;
   }
-  .map-legend {
-    flex-wrap: wrap;
-    padding: 12px 15px;
-    bottom: 5px;
-    width: 95%;
+  .nav-dot {
+    width: 10px;
+    height: 10px;
   }
-  .legend-text {
-    font-size: 16px; /* Увеличен размер */
+  .map-footer {
+    height: 180px;
   }
   .legend-item {
     margin: 5px 8px;
   }
-  .legend-dot, .legend-selected-dot {
+  .legend-dot,
+  .legend-selected-dot {
     width: 16px;
     height: 16px;
   }
@@ -484,41 +465,141 @@
   }
 }
 
-/* --- Удаление старых стилей экспонатов --- */
-.hall-exhibits, .round-exhibit, .corridor-exhibit-1, .corridor-exhibit-2 {
-  display: none; /* Скрываем старые, будем использовать новые */
-}
-
-/* Удаление псевдо-элементов, если они были */
-.hall-6::before, .hall-6::after, .entrance-area::before {
+.hall-exhibits,
+.round-exhibit,
+.corridor-exhibit-1,
+.corridor-exhibit-2 {
   display: none;
 }
 
-/* --- Переопределение позиций звезд --- */
-/* Оставляем существующие классы .star-dot-N, но их позиционирование
-   можно будет точнее настроить позже, если потребуется */
-.star-dot-1 { top: 7%; left: 12%; animation-delay: 0s; }
-.star-dot-2 { top: 15%; right: 8%; animation-delay: 0.5s; }
-.star-dot-3 { top: 25%; left: 20%; animation-delay: 1s; }
-.star-dot-4 { top: 35%; right: 25%; animation-delay: 1.5s; }
-.star-dot-5 { top: 10%; left: 35%; animation-delay: 2s; }
-.star-dot-6 { top: 65%; right: 12%; animation-delay: 2.5s; }
-.star-dot-7 { top: 45%; left: 7%; animation-delay: 3s; }
-.star-dot-8 { top: 80%; right: 30%; animation-delay: 3.5s; }
-.star-dot-9 { top: 50%; left: 60%; animation-delay: 1.2s; }
-.star-dot-10 { top: 73%; left: 35%; animation-delay: 0.7s; }
-.star-dot-11 { top: 18%; left: 80%; animation-delay: 2.2s; }
-.star-dot-12 { top: 60%; left: 75%; animation-delay: 1.8s; }
-.star-dot-13 { top: 90%; left: 15%; animation-delay: 0.3s; }
-.star-dot-14 { top: 30%; left: 45%; animation-delay: 2.7s; }
-.star-dot-15 { top: 85%; left: 90%; animation-delay: 3.3s; }
-.star-dot-16 { top: 5%; left: 55%; animation-delay: 1.1s; }
-.star-dot-17 { top: 22%; left: 65%; animation-delay: 2.8s; }
-.star-dot-18 { top: 40%; right: 8%; animation-delay: 0.9s; }
-.star-dot-19 { top: 55%; left: 15%; animation-delay: 3.2s; }
-.star-dot-20 { top: 70%; right: 50%; animation-delay: 1.6s; }
-.star-dot-21 { top: 12%; right: 35%; animation-delay: 2.3s; }
-.star-dot-22 { top: 82%; left: 50%; animation-delay: 0.2s; }
-.star-dot-23 { top: 32%; left: 75%; animation-delay: 1.9s; }
-.star-dot-24 { top: 62%; right: 40%; animation-delay: 3.7s; }
-.star-dot-25 { top: 95%; right: 25%; animation-delay: 2.5s; }
+.hall-6::before,
+.hall-6::after,
+.entrance-area::before {
+  display: none;
+}
+
+.star-dot-1 {
+  top: 7%;
+  left: 12%;
+  animation-delay: 0s;
+}
+.star-dot-2 {
+  top: 15%;
+  right: 8%;
+  animation-delay: 0.5s;
+}
+.star-dot-3 {
+  top: 25%;
+  left: 20%;
+  animation-delay: 1s;
+}
+.star-dot-4 {
+  top: 35%;
+  right: 25%;
+  animation-delay: 1.5s;
+}
+.star-dot-5 {
+  top: 10%;
+  left: 35%;
+  animation-delay: 2s;
+}
+.star-dot-6 {
+  top: 65%;
+  right: 12%;
+  animation-delay: 2.5s;
+}
+.star-dot-7 {
+  top: 45%;
+  left: 7%;
+  animation-delay: 3s;
+}
+.star-dot-8 {
+  top: 80%;
+  right: 30%;
+  animation-delay: 3.5s;
+}
+.star-dot-9 {
+  top: 50%;
+  left: 60%;
+  animation-delay: 1.2s;
+}
+.star-dot-10 {
+  top: 73%;
+  left: 35%;
+  animation-delay: 0.7s;
+}
+.star-dot-11 {
+  top: 18%;
+  left: 80%;
+  animation-delay: 2.2s;
+}
+.star-dot-12 {
+  top: 60%;
+  left: 75%;
+  animation-delay: 1.8s;
+}
+.star-dot-13 {
+  top: 90%;
+  left: 15%;
+  animation-delay: 0.3s;
+}
+.star-dot-14 {
+  top: 30%;
+  left: 45%;
+  animation-delay: 2.7s;
+}
+.star-dot-15 {
+  top: 85%;
+  left: 90%;
+  animation-delay: 3.3s;
+}
+.star-dot-16 {
+  top: 5%;
+  left: 55%;
+  animation-delay: 1.1s;
+}
+.star-dot-17 {
+  top: 22%;
+  left: 65%;
+  animation-delay: 2.8s;
+}
+.star-dot-18 {
+  top: 40%;
+  right: 8%;
+  animation-delay: 0.9s;
+}
+.star-dot-19 {
+  top: 55%;
+  left: 15%;
+  animation-delay: 3.2s;
+}
+.star-dot-20 {
+  top: 70%;
+  right: 50%;
+  animation-delay: 1.6s;
+}
+.star-dot-21 {
+  top: 12%;
+  right: 35%;
+  animation-delay: 2.3s;
+}
+.star-dot-22 {
+  top: 82%;
+  left: 50%;
+  animation-delay: 0.2s;
+}
+.star-dot-23 {
+  top: 32%;
+  left: 75%;
+  animation-delay: 1.9s;
+}
+.star-dot-24 {
+  top: 62%;
+  right: 40%;
+  animation-delay: 3.7s;
+}
+.star-dot-25 {
+  top: 95%;
+  right: 25%;
+  animation-delay: 2.5s;
+}

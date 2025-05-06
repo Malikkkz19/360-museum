@@ -1,4 +1,3 @@
-/* Предотвращаем прокрутку страницы */
 html,
 body {
   overflow: hidden;
@@ -9,19 +8,17 @@ body {
 
 .landing-page {
   position: relative;
-  background-color: #2a3f5f; /* Темно-синий фон */
+  background-color: #2a3f5f;
   min-height: 100vh;
-  height: 100vh; /* Фиксируем высоту */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   font-family: var(--magistral-font);
   padding: 40px;
-  /* overflow: hidden;  Удалено, чтобы иконки были видны */
 }
 
-/* Мерцающие звезды */
 .twinkling-stars {
   position: absolute;
   top: 0;
@@ -42,7 +39,6 @@ body {
   animation: twinkle 4s infinite;
 }
 
-/* Позиционирование точек-звезд */
 .star-dot-1 {
   top: 7%;
   left: 12%;
@@ -169,7 +165,6 @@ body {
   animation-delay: 2.5s;
 }
 
-/* Разные размеры для звезд */
 .star-dot:nth-child(3n + 1) {
   width: 3px;
   height: 3px;
@@ -181,7 +176,6 @@ body {
   box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Анимация мерцания */
 @keyframes twinkle {
   0% {
     opacity: 0.1;
@@ -194,19 +188,18 @@ body {
   }
 }
 
-/* Логотипы по краям */
 .logo-left {
   position: absolute;
   top: 10px;
   left: 10px;
-  height: 220px; /* +10% */
+  height: 220px;
 }
 
 .logo-right {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  height: 220px; /* +10% */
+  height: 220px;
 }
 
 .logo-left img,
@@ -214,7 +207,6 @@ body {
   height: 100%;
 }
 
-/* Заголовок - поднят выше */
 .landing-header {
   text-align: center;
   margin-top: 10px;
@@ -262,37 +254,33 @@ body {
   color: transparent;
 }
 
-/* Очищаем эффекты от предыдущих псевдоэлементов */
 .landing-header h1::before,
 .landing-header h1::after,
 .landing-header h2::before {
   display: none;
 }
 
-/* Основной контент - перестроено для нового макета */
 .landing-main {
   display: grid;
-  grid-template-columns: 350px 1fr 350px; /* Увеличены колонки для кнопок и центрального контента */
-  grid-template-rows: auto 1fr auto; /* Строки для заголовка, слайд-шоу/кнопок, кнопки карты */
-  align-items: center; /* Выравнивание по центру по вертикали */
-  justify-items: center; /* Выравнивание по центру по горизонтали */
+  grid-template-columns: 350px 1fr 350px;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  justify-items: center;
   width: 100%;
-  max-width: 1800px; /* Увеличено для размещения колонок */
-  margin: 0 auto; /* Центрирование основного блока */
+  max-width: 1800px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
-  height: calc(
-    100vh - 180px
-  ); /* Адаптивная высота, учитывая заголовок и отступы */
-  padding: 10px 0; /* Уменьшены вертикальные отступы */
-  gap: 15px; /* Увеличено пространство между элементами сетки */
+  height: calc(100vh - 180px);
+  padding: 10px 0;
+  gap: 15px;
 }
 
 .virtual-tour-wrapper {
-  grid-column: 1 / -1; /* Заголовок занимает всю ширину */
+  grid-column: 1 / -1;
   grid-row: 1 / 2;
   position: relative;
-  margin-bottom: 10px; /* Уменьшено */
+  margin-bottom: 10px;
   text-align: center;
   width: 100%;
 }
@@ -314,13 +302,11 @@ body {
   display: inline-block;
 }
 
-/* Очищаем эффекты от предыдущих псевдоэлементов */
 .virtual-tour-title::before,
 .virtual-tour-title::after {
   display: none;
 }
 
-/* Подчеркивание */
 .virtual-tour-title-underline {
   position: absolute;
   bottom: -15px;
@@ -333,7 +319,6 @@ body {
   opacity: 0.7;
 }
 
-/* Упрощенные анимации - только переливание цвета */
 @keyframes shine {
   0% {
     background-position: 0% center;
@@ -352,24 +337,23 @@ body {
   }
 }
 
-/* Слайд-шоу с изображениями музея - увеличено и отцентрировано */
 .museum-slideshow {
-  grid-column: 2 / 3; /* Центральная колонка */
+  grid-column: 2 / 3;
   grid-row: 1/3;
-  width: 95%; /* Увеличено */
-  max-width: 1000px; /* Максимальная ширина */
-  height: auto; /* Автоматическая высота */
-  margin: 0 auto; /* Центрирование */
-  border-radius: 15px; /* Увеличен радиус */
+  width: 95%;
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  align-self: center; /* Выравнивание по центру строки */
+  align-self: center;
 }
 
 .museum-slideshow img {
   width: 100%;
-  height: 50vh; /* Увеличена высота относительно viewport */
-  max-height: 550px; /* Максимальная высота */
+  height: 50vh;
+  max-height: 550px;
   object-fit: cover;
 }
 
@@ -382,72 +366,70 @@ body {
   opacity: 1 !important;
 }
 
-/* Контейнеры для кнопок залов */
 .halls-left,
 .halls-right {
-  grid-row: 2 / 3; /* Та же строка, что и слайд-шоу */
+  grid-row: 2 / 3;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Центрирование кнопок по вертикали */
-  gap: 10px; /* Увеличено пространство между кнопками */
-  height: 100%; /* Занимают всю высоту строки */
-  align-self: center; /* Выравнивание по центру строки */
-  margin-top: -30px; /* Поднимаем кнопки выше */
-  z-index: 5; /* Увеличиваем z-index, чтобы кнопки были видны */
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+  align-self: center;
+  margin-top: -30px;
+  z-index: 5;
 }
 
 .halls-left {
-  grid-column: 1 / 2; /* Левая колонка */
-  align-items: flex-start; /* Выравнивание кнопок по левому краю */
-  padding-left: 30px; /* Увеличен отступ слева */
+  grid-column: 1 / 2;
+  align-items: flex-start;
+  padding-left: 30px;
 }
 
 .halls-right {
-  grid-column: 3 / 4; /* Правая колонка */
-  align-items: flex-end; /* Выравнивание кнопок по правому краю */
-  padding-right: 30px; /* Увеличен отступ справа */
+  grid-column: 3 / 4;
+  align-items: flex-end;
+  padding-right: 30px;
 }
 
-/* Карточка зала - адаптация для вертикального расположения */
 .hall-card {
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
   perspective: 1200px;
-  width: 320px; /* Еще больше увеличена ширина кнопок */
-  margin: 25px 0; /* Увеличен отступ между кнопками */
+  width: 320px;
+  margin: 25px 0;
 }
 
 .hall-card:hover {
-  transform: scale(1.2); /* Еще больше увеличен эффект при наведении */
+  transform: scale(1.2);
   z-index: 10;
 }
 
 .hall-image-container {
-  border-radius: 25px; /* Увеличен радиус скругления */
+  border-radius: 25px;
   overflow: hidden;
   margin-bottom: 18px;
-  border: 6px solid rgba(245, 166, 35, 0.5); /* Усилена золотистая рамка */
+  border: 6px solid rgba(245, 166, 35, 0.5);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.25); /* Улучшенная тень */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
 .hall-card:hover .hall-image-container {
-  border-color: #f5a623; /* Яркая золотистая рамка при наведении */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 166, 35, 0.8); /* Усиленная тень с золотистым свечением */
-  transform: translateY(-15px); /* Увеличено смещение при наведении */
+  border-color: #f5a623;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 166, 35, 0.8);
+  transform: translateY(-15px);
 }
 
 .hall-image {
   width: 100%;
-  height: 180px; /* Значительно увеличена высота изображения */
+  height: 180px;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
 
 .hall-card:hover .hall-image {
-  transform: scale(1.08); /* Увеличен эффект масштабирования при наведении */
+  transform: scale(1.08);
 }
 
 .hall-info {
@@ -456,47 +438,43 @@ body {
 }
 
 .hall-card:hover .hall-info {
-  transform: translateY(
-    -5px
-  ); /* Увеличен эффект смещения текста при наведении */
+  transform: translateY(-5px);
 }
 
 .hall-name {
-  font-size: 32px; /* Еще больше увеличен размер шрифта */
+  font-size: 32px;
   font-weight: bold;
   color: #fff;
   margin: 0;
   font-family: var(--magistral-font);
-  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Усилена тень для текста */
-  letter-spacing: 1.5px; /* Увеличен межбуквенный интервал */
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1.5px;
 }
 
 .hall-description {
-  font-size: 24px; /* Еще больше увеличен размер шрифта */
-  background: linear-gradient(90deg, #f5a623, #ffd700); /* Градиентный текст */
+  font-size: 24px;
+  background: linear-gradient(90deg, #f5a623, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 10px 0 0; /* Увеличен отступ */
+  margin: 10px 0 0;
   font-family: var(--magistral-font);
-  font-weight: 600; /* Полужирный шрифт */
+  font-weight: 600;
 }
 
-/* Контейнер для кнопки карты музея */
 .map-button-container {
-  grid-column: 1 / -1; /* Кнопка занимает всю ширину */
+  grid-column: 1 / -1;
   grid-row: 3 / 4;
   cursor: pointer;
   position: relative;
-  margin-top: -150px; /* Поднимаем еще выше */
-  margin-bottom: 10px; /* Оставляем нижний отступ */
+  margin-top: -150px;
+  margin-bottom: 10px;
   text-align: center;
-  perspective: 1100px; /* +10% */
-  align-self: start; /* Выравнивание по верху строки */
-  z-index: 10; /* Увеличиваем z-index, чтобы кнопка была видна */
+  perspective: 1100px;
+  align-self: start;
+  z-index: 10;
 }
 
-/* Футер с кнопками */
 .landing-footer {
   grid-column: 1 / -1;
   display: flex;
@@ -508,10 +486,9 @@ body {
   z-index: 10;
 }
 
-/* Кнопка описания залов */
 .room-descriptions-button {
-  background-color: #f5a623; /* Золотистый фон */
-  color: #ffffff; /* Белый текст */
+  background-color: #f5a623;
+  color: #ffffff;
   border: none;
   border-radius: 33px;
   padding: 17.6px 55px;
@@ -530,10 +507,9 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 166, 35, 0.6);
 }
 
-/* Кнопка карты музея */
 .map-button {
-  background-color: #f5a623; /* Золотистый фон */
-  color: #ffffff; /* Белый текст */
+  background-color: #f5a623;
+  color: #ffffff;
   border: none;
   border-radius: 33px;
   padding: 17.6px 55px;
@@ -553,14 +529,13 @@ body {
   background-color: #f8b94a;
 }
 
-/* Ракеты и планета на фоне (уменьшенные) */
 .white-rocket {
   position: absolute;
   top: -2%;
   left: 5%;
   z-index: 0;
   opacity: 0.9;
-  max-width: 22%; /* +10% */
+  max-width: 22%;
   pointer-events: none;
   animation: floatWhiteRocket 15s ease-in-out infinite;
   transform-origin: center center;
@@ -572,13 +547,12 @@ body {
   right: 5%;
   z-index: 0;
   opacity: 0.9;
-  max-width: 24%; /* +10% */
+  max-width: 24%;
   pointer-events: none;
   animation: floatPlanet 20s ease-in-out infinite;
   transform-origin: center center;
 }
 
-/* Уменьшенные иконки */
 .small-icon-rocket {
   max-width: 14% !important;
 }
@@ -591,7 +565,7 @@ body {
 .planet img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 16.5px rgba(255, 255, 255, 0.4)); /* +10% */
+  filter: drop-shadow(0 0 16.5px rgba(255, 255, 255, 0.4));
 }
 
 @keyframes floatWhiteRocket {
@@ -599,13 +573,13 @@ body {
     transform: translateY(0) rotate(0);
   }
   25% {
-    transform: translateY(11px) rotate(1deg); /* +10% */
+    transform: translateY(11px) rotate(1deg);
   }
   50% {
-    transform: translateY(22px) rotate(2deg); /* +10% */
+    transform: translateY(22px) rotate(2deg);
   }
   75% {
-    transform: translateY(11px) rotate(1deg); /* +10% */
+    transform: translateY(11px) rotate(1deg);
   }
   100% {
     transform: translateY(0) rotate(0);
@@ -617,7 +591,7 @@ body {
   right: 5%;
   z-index: 0;
   opacity: 0.9;
-  max-width: 22%; /* +10% */
+  max-width: 22%;
   pointer-events: none;
   animation: floatYellowRocket 18s ease-in-out infinite;
   transform-origin: center center;
@@ -627,7 +601,7 @@ body {
 .yellow-rocket img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 16.5px rgba(255, 255, 255, 0.4)); /* +10% */
+  filter: drop-shadow(0 0 16.5px rgba(255, 255, 255, 0.4));
 }
 
 @keyframes floatYellowRocket {
@@ -635,56 +609,47 @@ body {
     transform: translateY(0) rotate(0);
   }
   25% {
-    transform: translateY(-11px) rotate(-1deg); /* +10% */
+    transform: translateY(-11px) rotate(-1deg);
   }
   50% {
-    transform: translateY(-22px) rotate(-3deg); /* +10% */
+    transform: translateY(-22px) rotate(-3deg);
   }
   75% {
-    transform: translateY(-11px) rotate(-1deg); /* +10% */
+    transform: translateY(-11px) rotate(-1deg);
   }
   100% {
     transform: translateY(0) rotate(0);
   }
 }
 
-/* Кнопки контактов */
 .social-contacts {
   position: fixed;
-  bottom: 30px; /* Немного выше */
-  right: 30px; /* Немного левее */
+  bottom: 30px;
+  right: 30px;
   display: flex;
-  flex-direction: column; /* Вертикальное расположение */
+  flex-direction: column;
   gap: 15px;
-  z-index: 1000; /* Выше других элементов */
+  z-index: 1000;
 }
 
 .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px; /* Увеличим размер */
-  height: 50px; /* Увеличим размер */
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    #f5a623,
-    #ffc500
-  ); /* Обновленный градиент */
-  color: #ffffff; /* Белый цвет иконки */
-  font-size: 26px; /* Увеличим размер иконки */
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Плавная анимация */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(245, 166, 35, 0.4); /* Тень + свечение */
+  background: linear-gradient(135deg, #f5a623, #ffc500);
+  color: #ffffff;
+  font-size: 26px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px rgba(245, 166, 35, 0.4);
   cursor: pointer;
 }
 .social-icon:hover {
-  transform: scale(1.15) translateY(-5px); /* Увеличение и подъем при наведении */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(245, 166, 35, 0.6); /* Усиленная тень и свечение */
-  background: linear-gradient(
-    135deg,
-    #ffc500,
-    #f5a623
-  ); /* Инверсия градиента */
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(245, 166, 35, 0.6);
+  background: linear-gradient(135deg, #ffc500, #f5a623);
 }
 
 @keyframes floatPlanet {
@@ -692,24 +657,23 @@ body {
     transform: translateY(0) rotate(0);
   }
   25% {
-    transform: translateY(11px) rotate(-1deg); /* +10% */
+    transform: translateY(11px) rotate(-1deg);
   }
   50% {
-    transform: translateY(22px) rotate(-2deg); /* +10% */
+    transform: translateY(22px) rotate(-2deg);
   }
   75% {
-    transform: translateY(11px) rotate(-1deg); /* +10% */
+    transform: translateY(11px) rotate(-1deg);
   }
   100% {
     transform: translateY(0) rotate(0);
   }
 }
 
-/* Стили для мобильных устройств */
 @media (max-width: 845px) {
   .logo-left,
   .logo-right {
-    height: 132px; /* +10% */
+    height: 132px;
   }
 
   .landing-header h1 {
@@ -727,36 +691,32 @@ body {
   }
 
   .map-button {
-    padding: 13.2px 33px; /* +10% */
-    font-size: 17.6px; /* +10% */
+    padding: 13.2px 33px;
+    font-size: 17.6px;
   }
 
-  /* Адаптация размеров кнопок залов для мобильных устройств */
   .landing-main {
-    grid-template-columns: 250px 1fr 250px; /* Уменьшаем колонки на мобильных */
+    grid-template-columns: 250px 1fr 250px;
   }
 
   .hall-card {
-    width: 240px; /* Уменьшаем ширину кнопок на мобильных */
-    margin: 15px 0; /* Уменьшаем отступы между кнопками */
+    width: 240px;
+    margin: 15px 0;
   }
 
   .hall-image {
-    height: 180px; /* Уменьшаем высоту изображения */
+    height: 180px;
   }
 
   .hall-name {
-    font-size: 26px; /* Уменьшаем размер шрифта */
+    font-size: 26px;
   }
 
   .hall-description {
-    font-size: 20px; /* Уменьшаем размер шрифта */
+    font-size: 20px;
   }
 }
 
-/* Добавьте эти стили в конец файла LandingPage.css */
-
-/* Стили для приветственного модального окна */
 .welcome-modal-overlay {
   position: fixed;
   top: 0;
@@ -934,7 +894,8 @@ body {
 }
 
 @keyframes rocketFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0);
   }
   50% {
@@ -1021,7 +982,6 @@ body {
   animation: twinkle 4s infinite;
 }
 
-/* Позиционирование звезд в модальном окне */
 .modal-star-1 {
   top: 10%;
   left: 15%;
@@ -1075,7 +1035,7 @@ body {
 .modal-star-11 {
   top: 50%;
   left: 12%;
-  animation-delay: 2.0s;
+  animation-delay: 2s;
 }
 .modal-star-12 {
   top: 65%;
@@ -1098,7 +1058,6 @@ body {
   animation-delay: 0.4s;
 }
 
-/* Разные размеры для звезд */
 .modal-star-dot:nth-child(3n + 1) {
   width: 3px;
   height: 3px;
@@ -1110,28 +1069,27 @@ body {
   box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.3);
 }
 
-/* Адаптивность для модального окна */
 @media (max-width: 845px) {
   .welcome-modal {
     padding: 30px 20px;
   }
-  
+
   .welcome-modal-title {
     font-size: 36px;
   }
-  
+
   .welcome-modal-subtitle {
     font-size: 18px;
   }
-  
+
   .welcome-modal-academy-title {
     font-size: 22px;
   }
-  
+
   .welcome-modal-text {
     font-size: 16px;
   }
-  
+
   .welcome-modal-button {
     font-size: 16px;
     padding: 14px 28px;
@@ -1142,28 +1100,28 @@ body {
   .welcome-modal {
     padding: 25px 15px;
   }
-  
+
   .welcome-modal-title {
     font-size: 28px;
   }
-  
+
   .welcome-modal-subtitle {
     font-size: 14px;
   }
-  
+
   .welcome-modal-academy-title {
     font-size: 18px;
   }
-  
+
   .welcome-modal-text {
     font-size: 14px;
   }
-  
+
   .welcome-modal-button {
     font-size: 14px;
     padding: 12px 25px;
   }
-  
+
   .welcome-modal-rocket {
     width: 50px;
     height: 50px;

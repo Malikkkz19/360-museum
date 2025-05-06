@@ -7,14 +7,18 @@
   background-color: #000;
 }
 
-/* Стили для шапки */
 .tour-header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 100px;
-  background: linear-gradient(to right, rgba(23, 33, 51, 0.9), rgba(42, 63, 95, 0.9), rgba(33, 49, 75, 0.9));
+  background: linear-gradient(
+    to right,
+    rgba(23, 33, 51, 0.9),
+    rgba(42, 63, 95, 0.9),
+    rgba(33, 49, 75, 0.9)
+  );
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
@@ -25,7 +29,6 @@
   border-bottom: 2px solid rgba(245, 166, 35, 0.7);
 }
 
-/* Заголовок академии */
 .academy-title {
   max-width: 60%;
   margin: 0 auto;
@@ -47,8 +50,12 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: -200px 0; }
-  100% { background-position: 200px 0; }
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
 }
 
 .pano-container {
@@ -129,17 +136,15 @@
 }
 
 .scene-title {
-  display: none; /* Скрываем элемент "Позиция 1" */
+  display: none;
 }
 
-/* Добавьте это в ваш файл VirtualTour.css */
 .hotspot-link,
 .info-hotspot {
   position: relative;
   cursor: pointer;
 }
 
-/* Стили для карточек залов в линейке на странице виртуального тура */
 .tour-hall-card {
   flex: 0 0 auto;
   width: 150px;
@@ -212,7 +217,6 @@
   font-weight: 600;
 }
 
-/* Контейнер для линейки залов */
 .tour-halls-lineup {
   display: flex;
   flex-wrap: wrap;
@@ -370,7 +374,6 @@
   transform: scale(1.1);
 }
 
-/* Стили для точки, при наведении на которую появляется изображение */
 .image-hotspot {
   width: 30px;
   height: 30px;
@@ -380,7 +383,6 @@
   position: relative;
 }
 
-/* Стили для всплывающего окна с изображением */
 .image-tooltip {
   position: absolute;
   top: -150px;
@@ -395,20 +397,17 @@
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-/* Стили для изображения внутри всплывающего окна */
 .image-tooltip img {
   max-width: 250px;
   max-height: 150px;
   display: block;
 }
 
-/* Отображение всплывающего окна при наведении */
 .image-hotspot:hover .image-tooltip {
   opacity: 1;
   visibility: visible;
 }
 
-/* Стили для точки с видео */
 .video-hotspot {
   width: 30px;
   height: 30px;
@@ -418,7 +417,6 @@
   position: relative;
 }
 
-/* Стили для всплывающего окна с видео */
 .video-tooltip {
   position: absolute;
   top: -180px;
@@ -433,14 +431,12 @@
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-/* Стили для самого видео */
 .video-tooltip video {
   max-width: 320px;
   max-height: 180px;
   display: block;
 }
 
-/* Отображение видео при наведении */
 .video-hotspot:hover .video-tooltip {
   opacity: 1;
   visibility: visible;
@@ -451,7 +447,6 @@
   font-size: 14px;
 }
 
-/* Стили для кнопки открытия выпадающего меню */
 .side-menu-toggle {
   width: 50px;
   height: 50px;
@@ -481,13 +476,17 @@
 }
 
 .side-menu-toggle::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
   opacity: 0;
   transform: scale(0.5);
   transition: all 0.3s ease;
@@ -547,11 +546,10 @@
   background-color: #ffffff;
 }
 
-/* Стили для выпадающего меню слева */
 .side-menu {
   position: fixed;
   top: 0;
-  left: -350px; /* Начальное положение за пределами экрана */
+  left: -350px;
   width: 350px;
   height: 100vh;
   background: linear-gradient(
@@ -568,7 +566,7 @@
 }
 
 .side-menu.open {
-  left: 0; /* Показываем меню */
+  left: 0;
 }
 
 .side-menu-close {
@@ -606,7 +604,6 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 166, 35, 0.4);
 }
 
-/* Стили для иконки закрытия (крестика) */
 .close-icon {
   position: relative;
   width: 20px;
@@ -714,7 +711,6 @@
   left: 100%;
 }
 
-/* Стили для иконок в кнопках */
 .back-arrow {
   font-size: 20px;
   margin-right: 5px;
@@ -813,7 +809,6 @@
   color: #ffffff;
 }
 
-/* Стили для карты в боковом меню */
 .side-menu-map {
   margin-top: 30px;
   padding: 20px;
@@ -874,7 +869,6 @@
   animation: shineGold 4s linear infinite;
 }
 
-/* Стили для карты внутри бокового меню */
 .side-menu .room-map {
   width: 100%;
   height: 150px;
@@ -891,14 +885,12 @@
   border-radius: 10px;
 }
 
-/* Убираем старую навигационную панель и линейку залов */
 .tour-navigation-panel,
 .tour-navigation-container,
 .halls-bar-container {
   display: none;
 }
 
-/* Стили для кнопок навигации */
 .nav-button {
   background: linear-gradient(
     45deg,
@@ -930,7 +922,6 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Стили для кнопки назад в туре */
 .tour-back-button {
   display: flex;
   align-items: center;
@@ -938,22 +929,22 @@
     45deg,
     rgba(46, 70, 105, 0.9),
     rgba(72, 104, 153, 0.9)
-  ); /* Градиент фона */
-  border: 2px solid #f5a623; /* Золотистая граница */
-  border-radius: 30px; /* Более округлая форма */
+  );
+  border: 2px solid #f5a623;
+  border-radius: 30px;
   color: white;
-  padding: 18px 32px; /* Отступы */
-  font-size: 24px; /* Размер шрифта */
-  font-weight: bold; /* Жирный шрифт */
+  padding: 18px 32px;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(245, 166, 35, 0.5); /* Добавлено свечение */
-  text-transform: uppercase; /* Заглавные буквы */
-  letter-spacing: 1px; /* Межбуквенный интервал */
+  text-transform: uppercase;
+  letter-spacing: 1px;
   position: absolute;
-  left: 60px; /* Позиция в левом углу */
-  top: 40px; /* Позиция в верхнем углу */
-  z-index: 1001; /* Выше других элементов */
+  left: 60px;
+  top: 40px;
+  z-index: 1001;
 }
 
 .back-arrow {
@@ -972,9 +963,8 @@
   box-shadow: 0 0 20px rgba(245, 166, 35, 0.7), 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Стили для схемы помещения (перенесены в боковое меню) */
 .room-map-container {
-  display: none; /* Скрываем старый контейнер с картой */
+  display: none;
 }
 
 .room-map-container:hover {
@@ -1000,7 +990,6 @@
   border-radius: 8px;
 }
 
-/* Точки на карте */
 .map-dot {
   width: 12px;
   height: 12px;
@@ -1036,7 +1025,6 @@
   }
 }
 
-/* Позиционирование точек */
 .map-dot-1 {
   top: 20%;
   left: 10%;
@@ -1070,7 +1058,6 @@
   right: 20%;
 }
 
-/* Стенды на карте */
 .map-stand {
   position: absolute;
   background: linear-gradient(
@@ -1110,7 +1097,6 @@
   height: 60%;
 }
 
-/* Стили для кнопки описания зала */
 .room-description-button {
   background: linear-gradient(
     45deg,
@@ -1142,7 +1128,6 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Стили для выезжающей панели с описанием зала */
 .room-description-panel {
   position: fixed;
   top: 0;
@@ -1248,7 +1233,6 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-/* Стили для линейки с залами внизу страницы */
 .halls-bar-container {
   position: fixed;
   bottom: 10px;
@@ -1303,7 +1287,6 @@
   border-radius: 10px;
 }
 
-/* Стили для карточек залов */
 .hall-card {
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1411,7 +1394,6 @@
   font-weight: 600;
 }
 
-/* Адаптивные стили для линейки с залами */
 @media (max-width: 1024px) {
   .halls-bar-container {
     width: 90%;
@@ -1464,7 +1446,6 @@
     font-size: 10px;
   }
 
-  /* Корректировка положения других элементов для мобильных устройств */
   .room-map-container {
     bottom: 100px;
     width: 250px;
@@ -1504,25 +1485,20 @@
   }
 }
 
-/* Стили для линейки с залами внизу страницы виртуального тура */
-/* Стили для линейки с залами внизу страницы виртуального тура */
-/* Стили для линейки с залами внизу страницы виртуального тура */
-/* Создаем триггерную зону внизу экрана */
 .tour-halls-trigger {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 15px; /* Небольшая высота триггерной зоны */
+  height: 15px;
   z-index: 1499;
   cursor: pointer;
   opacity: 0;
 }
 
-/* Начальное положение контейнера (скрытый) */
 .tour-halls-bar-container {
   position: fixed;
-  bottom: -100px; /* Изначально спрятан ниже экрана */
+  bottom: -100px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -1540,12 +1516,11 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   border: 1px solid rgba(245, 166, 35, 0.4);
-  transition: bottom 0.5s cubic-bezier(0.17, 0.67, 0.35, 1.2), 
-              opacity 0.4s ease-in-out;
+  transition: bottom 0.5s cubic-bezier(0.17, 0.67, 0.35, 1.2),
+    opacity 0.4s ease-in-out;
   opacity: 0;
 }
 
-/* Анимация появления при наведении на триггер */
 .tour-halls-trigger:hover + .tour-halls-bar-container,
 .tour-halls-bar-container:hover {
   bottom: 8px;
@@ -1556,12 +1531,12 @@
 .tour-halls-bar {
   display: flex;
   justify-content: center;
-  gap: 22px; /* Увеличиваем расстояние между карточками */
+  gap: 22px;
   overflow-x: auto;
-  padding: 8px 25px 12px; /* Уменьшаем вертикальный padding */
+  padding: 8px 25px 12px;
   scrollbar-width: thin;
   scrollbar-color: #f5a623 rgba(42, 63, 95, 0.5);
-  margin: 0 15px; /* Дополнительное пространство по бокам */
+  margin: 0 15px;
 }
 
 .tour-halls-bar::-webkit-scrollbar {
@@ -1586,11 +1561,11 @@
   text-align: center;
   perspective: 1200px;
   position: relative;
-  margin: 8px 5px; /* Добавляем отступы для предотвращения дергания */
+  margin: 8px 5px;
 }
 
 .tour-hall-card:hover {
-  transform: scale(1.05); /* Уменьшаем масштаб при наведении */
+  transform: scale(1.05);
   z-index: 10;
 }
 
@@ -1613,7 +1588,7 @@
   overflow: hidden;
   margin-bottom: 8px;
   border: 2px solid rgba(245, 166, 35, 0.5);
-  transition: all 0.3s ease-out; /* Делаем анимацию проще и плавнее */
+  transition: all 0.3s ease-out;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35), 0 0 8px rgba(245, 166, 35, 0.2);
   height: 100px;
   position: relative;
@@ -1622,7 +1597,7 @@
 .tour-hall-card:hover .tour-hall-image-container {
   border-color: #f5a623;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 166, 35, 0.6);
-  transform: translateY(-5px); /* Уменьшаем смещение вверх */
+  transform: translateY(-5px);
 }
 
 .tour-hall-card.active .tour-hall-image-container {
@@ -1633,13 +1608,16 @@
 
 @keyframes pulse-card {
   0% {
-    box-shadow: 0 0 15px rgba(245, 166, 35, 0.8), 0 0 25px rgba(245, 166, 35, 0.4);
+    box-shadow: 0 0 15px rgba(245, 166, 35, 0.8),
+      0 0 25px rgba(245, 166, 35, 0.4);
   }
   50% {
-    box-shadow: 0 0 20px rgba(245, 166, 35, 0.9), 0 0 35px rgba(245, 166, 35, 0.6);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.9),
+      0 0 35px rgba(245, 166, 35, 0.6);
   }
   100% {
-    box-shadow: 0 0 15px rgba(245, 166, 35, 0.8), 0 0 25px rgba(245, 166, 35, 0.4);
+    box-shadow: 0 0 15px rgba(245, 166, 35, 0.8),
+      0 0 25px rgba(245, 166, 35, 0.4);
   }
 }
 
@@ -1670,7 +1648,7 @@
 
 .tour-hall-card:hover .tour-hall-image,
 .tour-hall-card.active .tour-hall-image {
-  transform: scale(1.05); /* Уменьшаем масштаб изображения */
+  transform: scale(1.05);
 }
 
 .tour-hall-info {
@@ -1716,7 +1694,6 @@
   opacity: 1;
 }
 
-/* Добавляем @keyframes анимации для эффектов появления и исчезновения */
 @keyframes slideUp {
   0% {
     transform: translate(-50%, 100%);
@@ -1740,18 +1717,17 @@
   }
 }
 
-/* Адаптивные стили */
 @media (max-width: 1024px) {
   .tour-halls-bar-container {
     width: 95%;
     bottom: 6px;
     padding: 8px 0;
   }
-  
+
   .tour-hall-card {
     width: 135px;
   }
-  
+
   .tour-hall-image-container {
     height: 70px;
   }
@@ -1763,32 +1739,31 @@
     bottom: 4px;
     padding: 6px 0;
   }
-  
+
   .tour-halls-bar {
     gap: 10px;
     padding: 4px 8px 6px;
     margin: 0 5px;
   }
-  
+
   .tour-hall-card {
     width: 110px;
     margin: 2px 2px;
   }
-  
+
   .tour-hall-image-container {
     height: 60px;
   }
-  
+
   .tour-hall-name {
     font-size: 12px;
   }
-  
+
   .tour-hall-description {
     font-size: 10px;
   }
 }
 
-/* Добавляем медиа-запрос для мобильных устройств, где нет наведения */
 @media (hover: none) {
   .tour-halls-bar-container {
     bottom: 8px;
@@ -1796,14 +1771,14 @@
     transform: translateX(-50%) scale(0.95);
     transition: transform 0.3s ease-out, opacity 0.3s;
   }
-  
+
   .tour-halls-bar-container:active {
     transform: translateX(-50%) scale(1);
     opacity: 1;
   }
-  
+
   .tour-halls-trigger {
-    display: none; /* Скрываем триггер на мобильных устройствах */
+    display: none;
   }
 }
 
@@ -1813,38 +1788,38 @@
     bottom: 5px;
     padding: 5px 0;
   }
-  
+
   .tour-halls-bar {
     gap: 8px;
   }
-  
+
   .tour-hall-card {
     width: 100px;
   }
-  
+
   .tour-hall-image-container {
     height: 65px;
   }
-  
+
   .tour-hall-name {
     font-size: 12px;
   }
-  
+
   .tour-hall-description {
     font-size: 10px;
   }
 }
 
-
-/* Добавьте эти стили в файл VirtualTour.css */
-
-/* Стили для подсказки о линейке залов */
 .halls-tooltip {
   position: fixed;
   bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, rgba(32, 48, 73, 0.9), rgba(42, 63, 95, 0.9));
+  background: linear-gradient(
+    135deg,
+    rgba(32, 48, 73, 0.9),
+    rgba(42, 63, 95, 0.9)
+  );
   border: 1px solid #f5a623;
   border-radius: 12px;
   padding: 12px 20px;
@@ -1860,7 +1835,8 @@
   gap: 12px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.5s ease, visibility 0.5s,
+    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   pointer-events: none;
 }
 
@@ -1894,7 +1870,8 @@
 }
 
 @keyframes arrowBounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -1902,14 +1879,13 @@
   }
 }
 
-/* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
   .halls-tooltip {
     bottom: 55px;
     font-size: 13px;
     padding: 8px 15px;
   }
-  
+
   .halls-tooltip-icon {
     font-size: 16px;
   }

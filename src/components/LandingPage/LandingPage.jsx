@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { FaVk, FaTelegram, FaYoutube, FaInstagram, FaTimes } from "react-icons/fa";
+import {
+  FaVk,
+  FaTelegram,
+  FaYoutube,
+  FaInstagram,
+  FaTimes,
+} from "react-icons/fa";
 
-// Импортируем изображения залов
 import hall1 from "../../assets/halls/1.png";
 import hall2 from "../../assets/halls/2.png";
 import hall3 from "../../assets/halls/3.png";
 import hall4 from "../../assets/halls/4.png";
 import hall5 from "../../assets/halls/5.png";
 import hall6 from "../../assets/halls/6.png";
-// Импортируем изображения ракет и планеты
 import whiteRocket from "../../assets/halls/white_rocket.png";
 import yellowRocket from "../../assets/halls/yellow_rocket.png";
 import planet from "../../assets/halls/planet.png";
-// Импортируем изображения для слайд-шоу
 import museumImage1 from "../../assets/halls/vka.jpg";
-// Удаляем импорт звезд
-// import logoLeft from '../../assets/logo-left.png';
-// import logoRight from '../../assets/logo-right.png';
 
 const halls = [
   {
@@ -65,48 +65,39 @@ function LandingPage() {
   const navigate = useNavigate();
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
-  // Проверка первого посещения и отображения приветственного окна
   useEffect(() => {
-    const hasVisitedBefore = localStorage.getItem('hasVisitedMuseum');
+    const hasVisitedBefore = localStorage.getItem("hasVisitedMuseum");
     if (!hasVisitedBefore) {
-      // Добавляем небольшую задержку, чтобы страница успела загрузиться
       setTimeout(() => {
         setShowWelcomeModal(true);
-        localStorage.setItem('hasVisitedMuseum', 'true');
+        localStorage.setItem("hasVisitedMuseum", "true");
       }, 500);
     }
   }, []);
 
   const handleHallClick = (hallId) => {
-    // При клике переходим в нужный зал
     navigate(`/tour/${hallId}`);
   };
 
   const handleMapClick = () => {
-    // Действие для кнопки "КАРТА МУЗЕЯ"
-    // Можно переход к общей карте или к первому залу
     navigate("/map");
   };
 
   const handleRoomDescriptionsClick = () => {
-    // Действие для кнопки "ОПИСАНИЕ ЗАЛОВ"
     navigate("/room-descriptions");
   };
-  
-  // Добавляем функцию закрытия модального окна
+
   const closeWelcomeModal = () => {
     setShowWelcomeModal(false);
   };
 
-  // Функция для отладки - сбросить локальное хранилище
   const resetWelcomeModal = () => {
-    localStorage.removeItem('hasVisitedMuseum');
+    localStorage.removeItem("hasVisitedMuseum");
     window.location.reload();
   };
 
   return (
     <div className="landing-page">
-      {/* Мерцающие точки-звезды на фоне */}
       <div className="twinkling-stars">
         <div className="star-dot star-dot-1"></div>
         <div className="star-dot star-dot-2"></div>
@@ -135,20 +126,13 @@ function LandingPage() {
         <div className="star-dot star-dot-25"></div>
       </div>
 
-      {/* Ракеты и планета на фоне (уменьшенные) */}
       <div className="white-rocket small-icon-rocket">
         <img src={whiteRocket} alt="Белая ракета" />
       </div>
 
-      {/* Планета в правом верхнем углу (уменьшенная) */}
       <div className="planet small-icon-planet">
         <img src={planet} alt="Планета" />
       </div>
-
-      {/* Временно скрываем логотипы */}
-      {/* <div className="logo-left">
-        <img src={logoLeft} alt="Лого" />
-      </div> */}
 
       <header className="landing-header elevated">
         <h1>МУЗЕЙ ИСТОРИИ</h1>
@@ -162,7 +146,6 @@ function LandingPage() {
           <div className="virtual-tour-title-underline"></div>
         </div>
 
-        {/* Слайд-шоу с изображениями музея */}
         <div className="museum-slideshow">
           <Carousel
             autoPlay
@@ -191,7 +174,6 @@ function LandingPage() {
           </Carousel>
         </div>
 
-        {/* Левая колонка с залами 1-3 */}
         <div className="halls-left">
           {halls.slice(0, 3).map((hall) => (
             <div
@@ -210,7 +192,6 @@ function LandingPage() {
           ))}
         </div>
 
-        {/* Правая колонка с залами 4-6 */}
         <div className="halls-right">
           {halls.slice(3, 6).map((hall) => (
             <div
@@ -279,76 +260,87 @@ function LandingPage() {
       </div>
 
       {/* Временная кнопка для тестирования приветствия */}
-      <button 
+      <button
         onClick={resetWelcomeModal}
         style={{
-          position: 'fixed', 
-          bottom: '10px', 
-          left: '10px', 
-          zIndex: 999, 
-          background: '#2a3f5f',
-          color: '#fff',
-          border: '1px solid #f5a623',
-          padding: '5px 10px',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontSize: '12px'
+          position: "fixed",
+          bottom: "10px",
+          left: "10px",
+          zIndex: 999,
+          background: "#2a3f5f",
+          color: "#fff",
+          border: "1px solid #f5a623",
+          padding: "5px 10px",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "12px",
         }}
       >
         Сбросить приветствие
       </button>
 
-      {/* Приветственное модальное окно */}
       {showWelcomeModal && (
         <div className="welcome-modal-overlay" onClick={closeWelcomeModal}>
           <div className="welcome-modal" onClick={(e) => e.stopPropagation()}>
             <button className="welcome-modal-close" onClick={closeWelcomeModal}>
               <FaTimes />
             </button>
-            
+
             <div className="welcome-modal-content">
               <div className="welcome-modal-header">
                 <div className="welcome-modal-title-container">
                   <h2 className="welcome-modal-title">Добро пожаловать</h2>
-                  <div className="welcome-modal-subtitle">в виртуальный музей истории</div>
+                  <div className="welcome-modal-subtitle">
+                    в виртуальный музей истории
+                  </div>
                 </div>
-                
+
                 <div className="welcome-modal-academy-title">
                   Военно-космической академии
-                  <br />имени А.Ф. Можайского
+                  <br />
+                  имени А.Ф. Можайского
                 </div>
               </div>
-              
+
               <div className="welcome-modal-divider">
                 <div className="welcome-modal-rocket">
                   <img src={yellowRocket} alt="Ракета" />
                 </div>
               </div>
-              
+
               <div className="welcome-modal-text">
                 <p>
-                  Приветствуем вас в виртуальном пространстве музея истории Военно-космической академии имени А.Ф. Можайского – 
-                  старейшего военно-учебного заведения России, основанного в 1712 году.
+                  Приветствуем вас в виртуальном пространстве музея истории
+                  Военно-космической академии имени А.Ф. Можайского – старейшего
+                  военно-учебного заведения России, основанного в 1712 году.
                 </p>
                 <p>
-                  Здесь вы можете совершить увлекательное путешествие по залам музея, 
-                  познакомиться с уникальными экспонатами и узнать об истории становления и развития 
-                  отечественной космонавтики и ракетостроения.
+                  Здесь вы можете совершить увлекательное путешествие по залам
+                  музея, познакомиться с уникальными экспонатами и узнать об
+                  истории становления и развития отечественной космонавтики и
+                  ракетостроения.
                 </p>
                 <p>
-                  Выберите интересующий вас зал на главной странице или воспользуйтесь 
-                  картой музея для навигации по виртуальному пространству.
+                  Выберите интересующий вас зал на главной странице или
+                  воспользуйтесь картой музея для навигации по виртуальному
+                  пространству.
                 </p>
               </div>
-              
-              <button className="welcome-modal-button" onClick={closeWelcomeModal}>
+
+              <button
+                className="welcome-modal-button"
+                onClick={closeWelcomeModal}
+              >
                 Начать виртуальное путешествие
               </button>
             </div>
-            
+
             <div className="welcome-modal-stars">
               {[...Array(15)].map((_, index) => (
-                <div key={index} className={`modal-star-dot modal-star-${index + 1}`}></div>
+                <div
+                  key={index}
+                  className={`modal-star-dot modal-star-${index + 1}`}
+                ></div>
               ))}
             </div>
           </div>
