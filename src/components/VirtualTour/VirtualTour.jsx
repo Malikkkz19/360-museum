@@ -481,21 +481,25 @@ const VirtualTour = () => {
     <div className="virtual-tour-container">
       <div ref={panoRef} className="pano-container"></div>
 
-      {/* Заголовок академии */}
-      <div className="academy-title">
-        Военно-космическая академия им. А.Ф. Можайского
-      </div>
+      {/* Красивая шапка */}
+      <header className="tour-header">
+        {/* Кнопка для открытия выпадающего меню */}
+        <button className="side-menu-toggle" onClick={toggleSideMenu}>
+          <span className="menu-icon">
+            <span></span>
+          </span>
+        </button>
 
-      <div className="academy-logo">
-        <img src={yellowRocket} alt="Ракета" />
-      </div>
+        {/* Заголовок академии */}
+        <div className="academy-title">
+          Военно-космическая академия им. А.Ф. Можайского
+        </div>
 
-      {/* Кнопка для открытия выпадающего меню */}
-      <button className="side-menu-toggle" onClick={toggleSideMenu}>
-        <span className="menu-icon">
-          <span></span>
-        </span>
-      </button>
+        {/* Логотип академии */}
+        <div className="academy-logo">
+          <img src={yellowRocket} alt="Ракета" />
+        </div>
+      </header>
 
       {/* Выпадающее меню слева */}
       <div className={`side-menu ${isSideMenuOpen ? "open" : ""}`}>
@@ -612,19 +616,19 @@ const VirtualTour = () => {
             {
               id: "room1",
               name: "ЗАЛ 1",
-              description: "История академии",
+              description: "Посвящен периоду с 1712 по 1918г.",
               image: "/images/1.png",
             },
             {
               id: "room2",
               name: "ЗАЛ 2",
-              description: "Становление ВКА",
+              description: "Посвящён периоду с 1918 по 1941г.",
               image: "/images/2.png",
             },
             {
               id: "room3",
               name: "ЗАЛ 3",
-              description: "1941-1957 гг.",
+              description: "Посвящен периоду с 1941 по 1957г.",
               image: "/images/3.png",
             },
             {
@@ -642,7 +646,7 @@ const VirtualTour = () => {
             {
               id: "room6",
               name: "ЗАЛ 6",
-              description: "Учебный зал",
+              description: "Лекционный зал",
               image: "/images/6.png",
             },
           ].map((hall) => (

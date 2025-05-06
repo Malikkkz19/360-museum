@@ -26,37 +26,37 @@ const halls = [
   {
     id: "room1",
     name: "ЗАЛ 1",
-    description: "НАИМЕНОВАНИЕ ЗАЛА",
+    description: "Посвящен периоду с 1712 по 1918г.",
     image: hall1,
   },
   {
     id: "room2",
     name: "ЗАЛ 2",
-    description: "НАИМЕНОВАНИЕ ЗАЛА",
+    description: "Посвящён периоду с 1918 по 1941г.",
     image: hall2,
   },
   {
     id: "room3",
     name: "ЗАЛ 3",
-    description: "НАИМЕНОВАНИЕ ЗАЛА",
+    description: "Посвящен периоду c 1941 по 1957г.",
     image: hall3,
   },
   {
     id: "room4",
     name: "ЗАЛ 4",
-    description: "НАИМЕНОВАНИЕ ЗАЛА",
+    description: "Космический зал",
     image: hall4,
   },
   {
     id: "room5",
     name: "ЗАЛ 5",
-    description: "НАИМЕНОВАНИЕ ЗАЛА",
+    description: "Зал славы",
     image: hall5,
   },
   {
     id: "room6",
     name: "ЗАЛ 6",
-    description: "НАИМЕНОВАНИЕ ЗАЛА",
+    description: "Лекционный зал",
     image: hall6,
   },
 ];
